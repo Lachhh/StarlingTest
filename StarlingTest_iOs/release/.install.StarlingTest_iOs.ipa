@@ -1,0 +1,8 @@
+C:\tools\flex_sdk_4_6AS2Compiler\bin\adt.bat
+-installApp
+-platform
+ios
+-device
+4
+-package
+C:/Workspace/StarlingTest_iOs/release/StarlingTest_iOs.ipa
