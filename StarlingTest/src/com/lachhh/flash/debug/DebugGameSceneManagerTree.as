@@ -1,6 +1,6 @@
 package com.lachhh.flash.debug {
-	import com.infernax.scenes.GameSceneManager;
 	import com.lachhh.lachhhengine.ActorObjectManager;
+	import com.zombidle.scenes.GameSceneManager;
 	/**
 	 * @author LachhhSSD
 	 */

@@ -1,4 +1,5 @@
 package com.lachhh.lachhhengine.animation {
+	import com.animation.exported.*;
 	import com.lachhh.flash.FlashAnimation;
 
 	import flash.display.MovieClip;
@@ -9,9 +10,8 @@ package com.lachhh.lachhhengine.animation {
 	 */
 	public class AnimationFactory {
 		static public var allAnimationClass:Vector.<Class> = new Vector.<Class>();
-		
 		static public var EMPTY:int = pushClassLink(FlashAnimation);
-		
+		static public var ID_UI_DEBUG:int = pushClassLink(UI_DEBUG);
 		
 		static public function pushClassLink(pClass:Class):int {
 			allAnimationClass.push(pClass);
@@ -70,7 +70,5 @@ package com.lachhh.lachhhengine.animation {
 			}
 			return -1;
 		} 
-		
-
 	}
 }

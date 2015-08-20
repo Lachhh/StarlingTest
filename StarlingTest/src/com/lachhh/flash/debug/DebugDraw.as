@@ -1,12 +1,12 @@
 package com.lachhh.flash.debug {
-	import com.infernax.physics.Line;
-	import com.infernax.physics.Circle;
 	import com.lachhh.io.KeyManager;
 	import com.lachhh.lachhhengine.MyMath;
 	import com.lachhh.lachhhengine.actor.Actor;
 	import com.lachhh.lachhhengine.animation.AnimationFactory;
 	import com.lachhh.lachhhengine.camera.CameraFlash;
 	import com.lachhh.lachhhengine.components.RenderComponent;
+	import com.zombidle.physics.Circle;
+	import com.zombidle.physics.Line;
 
 	import flash.display.DisplayObjectContainer;
 	import flash.display.MovieClip;

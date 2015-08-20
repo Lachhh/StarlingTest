@@ -1,7 +1,7 @@
 package com.flashinit {
-	import com.infernax.MainGame;
 	import com.lachhh.lachhhengine.VersionInfo;
 	import com.lachhh.lachhhengine.sfx.Jukebox;
+	import com.zombidle.MainGame;
 
 	import flash.display.Sprite;
 	/**

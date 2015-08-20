@@ -60,7 +60,7 @@ package com.lachhh.lachhhengine.components {
 		}
 		
 		public function getYRelativeToScreen():Number {
-			return (actor.py + yVisualOffset)-CameraFlash.mainCamera.boundsFOV.y + CameraFlash.mainCamera.yOffset;
+			return (actor.py + yVisualOffset)-CameraFlash.mainCamera.boundsFOV.y;
 		}
 		
 		static public function addToActor(actor : Actor, parentVisual:DisplayObjectContainer, animId:int):RenderComponent {

@@ -1,5 +1,5 @@
 package com.lachhh.lachhhengine.meta {
-	import com.infernax.multilingual.TextFactory;
+	import com.zombidle.multilingual.TextFactory;
 
 	/**
 	 * @author Lachhh

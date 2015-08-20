@@ -1,7 +1,7 @@
 package com.lachhh.lachhhengine.components {
-	import com.infernax.physics.CollisionInfo;
 	import com.lachhh.io.Callback;
 	import com.lachhh.lachhhengine.actor.Actor;
+	import com.zombidle.physics.CollisionInfo;
 
 	/**
 	 * @author LachhhSSD

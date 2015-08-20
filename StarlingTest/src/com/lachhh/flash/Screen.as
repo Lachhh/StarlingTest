@@ -1,5 +1,5 @@
 package com.lachhh.flash {
-	import com.infernax.MainGame;
+	import com.zombidle.MainGame;
 	/**
 	 * @author LachhhSSD
 	 */

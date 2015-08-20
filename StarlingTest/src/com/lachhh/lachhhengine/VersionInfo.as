@@ -12,6 +12,7 @@ package com.lachhh.lachhhengine {
 		static public var DEBUG_NoEnemies:Boolean = false;
 		
 		static public var DLC_ACTIVATED:Boolean = false;
-		static public var DLC_BOUGHT:Boolean = false;
+		static public var DLC_BOUGHT : Boolean = false;
+		public static var isIOS : Boolean = false;
 	}
 }

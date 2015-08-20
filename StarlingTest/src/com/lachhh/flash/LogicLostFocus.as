@@ -1,7 +1,7 @@
 package com.lachhh.flash {
-	import com.infernax.MainGame;
 	import com.lachhh.lachhhengine.actor.Actor;
 	import com.lachhh.lachhhengine.components.ActorComponent;
+	import com.zombidle.MainGame;
 
 	import flash.events.Event;
 

@@ -9,16 +9,10 @@ package com.lachhh.lachhhengine.camera {
 		public var allLayerVisual:Vector.<DisplayObjectContainer> = new Vector.<DisplayObjectContainer>();
 		public var container:DisplayObjectContainer;
 		
-		public var parallaxVisual : DisplayObjectContainer ;
-		public var levelPartBackVisual : DisplayObjectContainer ;
-		public var levelPartVisual : DisplayObjectContainer ;
-		public var fake3dVisual : DisplayObjectContainer ;
+		public var backgroundVisual : DisplayObjectContainer ;
 		public var backFxVisual : DisplayObjectContainer ;
-		public var deathVisual : DisplayObjectContainer ;
-		public var deathFxVisual : DisplayObjectContainer ;
 		public var heroVisual : DisplayObjectContainer ;
 		public var enemyVisual : DisplayObjectContainer ;
-		public var itemVisual : DisplayObjectContainer ;
 		public var ammoVisual : DisplayObjectContainer ;
 		public var foreFxVisual : DisplayObjectContainer ;
 		public var debugVisual : DisplayObjectContainer ;
@@ -27,18 +21,13 @@ package com.lachhh.lachhhengine.camera {
 		public function CameraFlashContainers(pContainer:DisplayObjectContainer) {
 			container = pContainer;
 			
-			parallaxVisual = createLayerVisual();
-			levelPartBackVisual = createLayerVisual();
-			levelPartVisual = createLayerVisual();
-			fake3dVisual = createLayerVisual();
+			backgroundVisual = createLayerVisual();
 			backFxVisual = createLayerVisual();
 			ammoVisual = createLayerVisual();
-			enemyVisual = createLayerVisual();
 			heroVisual = createLayerVisual();
-			itemVisual = createLayerVisual();
+			enemyVisual = createLayerVisual();
+			
 			foreFxVisual = createLayerVisual();
-			deathVisual = createLayerVisual();
-			deathFxVisual = createLayerVisual();
 			debugVisual = createLayerVisual();
 			instance = this;
 		}

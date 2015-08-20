@@ -1,0 +1,723 @@
+%!Adobe-FontList 1.16
+%Locale:0x409
+
+%BeginFont
+Handler:DirectoryHandler
+FontType:Invalid
+OutlineFileName:C:\Workspace\ZombIdle\visual sfx\Art\Font\__MACOSX\Font\._sf_ironsides
+FileModTime:1378998378
+%EndFont
+
+%BeginFont
+Handler:DirectoryHandler
+FontType:Invalid
+OutlineFileName:C:\Workspace\ZombIdle\visual sfx\Art\Font\__MACOSX\Font\._vinque.otf
+FileModTime:1328062418
+%EndFont
+
+%BeginFont
+Handler:DirectoryHandler
+FontType:Type1
+FontName:Vinque-Regular
+FamilyName:Vinque
+StyleName:Regular
+FullName:Vinque-Regular
+MenuName:Vinque
+StyleBits:0
+WritingScript:Roman
+OutlineFileName:C:\Workspace\ZombIdle\visual sfx\Art\Font\Font\vinque.otf
+DataFormat:sfntData
+UsesStandardEncoding:yes
+isCFF:yes
+FileLength:57236
+FileModTime:1328062418
+WeightClass:400
+WidthClass:5
+AngleClass:0
+NameArray:0,Mac,4,Vinque-Regular
+NameArray:0,Win,1,Vinque
+%EndFont
+
+%BeginFont
+Handler:DirectoryHandler
+FontType:Invalid
+OutlineFileName:C:\Workspace\ZombIdle\visual sfx\Art\Font\Font\sf_ironsides\.DS_Store
+FileModTime:1358960658
+%EndFont
+
+%BeginFont
+Handler:DirectoryHandler
+FontType:TrueType
+FontName:SFIronsides-BoldItalic
+FamilyName:SF Ironsides
+StyleName:Bold Italic
+FullName:SF Ironsides Bold Italic
+MenuName:SF Ironsides
+StyleBits:3
+WritingScript:Roman
+OutlineFileName:C:\Workspace\ZombIdle\visual sfx\Art\Font\Font\sf_ironsides\SF Ironsides Bold Italic.ttf
+DataFormat:sfntData
+FileLength:25828
+FileModTime:953081460
+WeightClass:700
+WidthClass:5
+AngleClass:0
+NameArray:0,Mac,4,SF Ironsides Bold Italic
+NameArray:0,Win,1,SF Ironsides
+%EndFont
+
+%BeginFont
+Handler:DirectoryHandler
+FontType:TrueType
+FontName:SFIronsides-Bold
+FamilyName:SF Ironsides
+StyleName:Bold
+FullName:SF Ironsides Bold
+MenuName:SF Ironsides
+StyleBits:2
+WritingScript:Roman
+OutlineFileName:C:\Workspace\ZombIdle\visual sfx\Art\Font\Font\sf_ironsides\SF Ironsides Bold.ttf
+DataFormat:sfntData
+FileLength:27616
+FileModTime:953081520
+WeightClass:700
+WidthClass:5
+AngleClass:0
+NameArray:0,Mac,4,SF Ironsides Bold
+NameArray:0,Win,1,SF Ironsides
+%EndFont
+
+%BeginFont
+Handler:DirectoryHandler
+FontType:TrueType
+FontName:SFIronsidesCondensed-Italic
+FamilyName:SF Ironsides Condensed
+StyleName:Italic
+FullName:SF Ironsides Condensed Italic
+MenuName:SF Ironsides Condensed
+StyleBits:1
+WritingScript:Roman
+OutlineFileName:C:\Workspace\ZombIdle\visual sfx\Art\Font\Font\sf_ironsides\SF Ironsides Condensed Italic.ttf
+DataFormat:sfntData
+FileLength:25796
+FileModTime:953081580
+WeightClass:400
+WidthClass:5
+AngleClass:0
+NameArray:0,Mac,4,SF Ironsides Condensed Italic
+NameArray:0,Win,1,SF Ironsides Condensed
+%EndFont
+
+%BeginFont
+Handler:DirectoryHandler
+FontType:TrueType
+FontName:SFIronsidesCondensed
+FamilyName:SF Ironsides Condensed
+StyleName:Regular
+FullName:SF Ironsides Condensed
+MenuName:SF Ironsides Condensed
+StyleBits:0
+WritingScript:Roman
+OutlineFileName:C:\Workspace\ZombIdle\visual sfx\Art\Font\Font\sf_ironsides\SF Ironsides Condensed.ttf
+DataFormat:sfntData
+FileLength:28644
+FileModTime:953081640
+WeightClass:400
+WidthClass:5
+AngleClass:0
+NameArray:0,Mac,4,SF Ironsides Condensed
+NameArray:0,Win,1,SF Ironsides Condensed
+%EndFont
+
+%BeginFont
+Handler:DirectoryHandler
+FontType:TrueType
+FontName:SFIronsidesExtended-Italic
+FamilyName:SF Ironsides Extended
+StyleName:Italic
+FullName:SF Ironsides Extended Italic
+MenuName:SF Ironsides Extended
+StyleBits:1
+WritingScript:Roman
+OutlineFileName:C:\Workspace\ZombIdle\visual sfx\Art\Font\Font\sf_ironsides\SF Ironsides Extended Italic.ttf
+DataFormat:sfntData
+FileLength:28700
+FileModTime:953081700
+WeightClass:400
+WidthClass:5
+AngleClass:0
+NameArray:0,Mac,4,SF Ironsides Extended Italic
+NameArray:0,Win,1,SF Ironsides Extended
+%EndFont
+
+%BeginFont
+Handler:DirectoryHandler
+FontType:TrueType
+FontName:SFIronsidesExtended
+FamilyName:SF Ironsides Extended
+StyleName:Regular
+FullName:SF Ironsides Extended
+MenuName:SF Ironsides Extended
+StyleBits:0
+WritingScript:Roman
+OutlineFileName:C:\Workspace\ZombIdle\visual sfx\Art\Font\Font\sf_ironsides\SF Ironsides Extended.ttf
+DataFormat:sfntData
+FileLength:29516
+FileModTime:953081700
+WeightClass:400
+WidthClass:5
+AngleClass:0
+NameArray:0,Mac,4,SF Ironsides Extended
+NameArray:0,Win,1,SF Ironsides Extended
+%EndFont
+
+%BeginFont
+Handler:DirectoryHandler
+FontType:TrueType
+FontName:SFIronsides-Italic
+FamilyName:SF Ironsides
+StyleName:Italic
+FullName:SF Ironsides Italic
+MenuName:SF Ironsides
+StyleBits:1
+WritingScript:Roman
+OutlineFileName:C:\Workspace\ZombIdle\visual sfx\Art\Font\Font\sf_ironsides\SF Ironsides Italic.ttf
+DataFormat:sfntData
+FileLength:26216
+FileModTime:953081760
+WeightClass:400
+WidthClass:5
+AngleClass:0
+NameArray:0,Mac,4,SF Ironsides Italic
+NameArray:0,Win,1,SF Ironsides
+%EndFont
+
+%BeginFont
+Handler:DirectoryHandler
+FontType:TrueType
+FontName:SFIronsides
+FamilyName:SF Ironsides
+StyleName:Regular
+FullName:SF Ironsides
+MenuName:SF Ironsides
+StyleBits:0
+WritingScript:Roman
+OutlineFileName:C:\Workspace\ZombIdle\visual sfx\Art\Font\Font\sf_ironsides\SF Ironsides.ttf
+DataFormat:sfntData
+FileLength:28224
+FileModTime:953081820
+WeightClass:400
+WidthClass:5
+AngleClass:0
+NameArray:0,Mac,4,SF Ironsides
+NameArray:0,Win,1,SF Ironsides
+%EndFont
+
+%BeginFont
+Handler:DirectoryHandler
+FontType:Type1
+FontName:GothamBlack-Italic
+FamilyName:GothamBlack
+StyleName:Italic
+FullName:GothamBlack Italic
+MenuName:GothamBlack
+StyleBits:1
+WritingScript:Roman
+OutlineFileName:C:\Workspace\ZombIdle\visual sfx\Art\Font\Font\Gotham\GothamBlack-Italic.otf
+DataFormat:sfntData
+UsesStandardEncoding:yes
+isCFF:yes
+FileLength:36024
+FileModTime:1162612150
+WeightClass:500
+WidthClass:5
+AngleClass:0
+NameArray:0,Mac,4,GothamBlack Italic
+NameArray:0,Win,1,GothamBlack
+%EndFont
+
+%BeginFont
+Handler:DirectoryHandler
+FontType:Type1
+FontName:GothamBlack
+FamilyName:GothamBlack
+StyleName:Regular
+FullName:GothamBlack
+MenuName:GothamBlack
+StyleBits:0
+WritingScript:Roman
+OutlineFileName:C:\Workspace\ZombIdle\visual sfx\Art\Font\Font\Gotham\GothamBlack.otf
+DataFormat:sfntData
+UsesStandardEncoding:yes
+isCFF:yes
+FileLength:34896
+FileModTime:1162612148
+WeightClass:500
+WidthClass:5
+AngleClass:0
+NameArray:0,Mac,4,GothamBlack
+NameArray:0,Win,1,GothamBlack
+%EndFont
+
+%BeginFont
+Handler:DirectoryHandler
+FontType:Type1
+FontName:GothamBold-Italic
+FamilyName:GothamBold
+StyleName:Italic
+FullName:GothamBold Italic
+MenuName:GothamBold
+StyleBits:3
+WritingScript:Roman
+OutlineFileName:C:\Workspace\ZombIdle\visual sfx\Art\Font\Font\Gotham\GothamBold-Italic.otf
+DataFormat:sfntData
+UsesStandardEncoding:yes
+isCFF:yes
+FileLength:34876
+FileModTime:1162612150
+WeightClass:500
+WidthClass:5
+AngleClass:0
+NameArray:0,Mac,4,GothamBold Italic
+NameArray:0,Win,1,GothamBold
+%EndFont
+
+%BeginFont
+Handler:DirectoryHandler
+FontType:Type1
+FontName:GothamBold
+FamilyName:GothamBold
+StyleName:Regular
+FullName:GothamBold
+MenuName:GothamBold
+StyleBits:2
+WritingScript:Roman
+OutlineFileName:C:\Workspace\ZombIdle\visual sfx\Art\Font\Font\Gotham\GothamBold.otf
+DataFormat:sfntData
+UsesStandardEncoding:yes
+isCFF:yes
+FileLength:34392
+FileModTime:1162612150
+WeightClass:500
+WidthClass:5
+AngleClass:0
+NameArray:0,Mac,4,GothamBold
+NameArray:0,Win,1,GothamBold
+%EndFont
+
+%BeginFont
+Handler:DirectoryHandler
+FontType:Type1
+FontName:GothamBook-Italic
+FamilyName:GothamBook
+StyleName:Italic
+FullName:GothamBook Italic
+MenuName:GothamBook
+StyleBits:1
+WritingScript:Roman
+OutlineFileName:C:\Workspace\ZombIdle\visual sfx\Art\Font\Font\Gotham\GothamBook-Italic.otf
+DataFormat:sfntData
+UsesStandardEncoding:yes
+isCFF:yes
+FileLength:34364
+FileModTime:1162612150
+WeightClass:500
+WidthClass:5
+AngleClass:0
+NameArray:0,Mac,4,GothamBook Italic
+NameArray:0,Win,1,GothamBook
+%EndFont
+
+%BeginFont
+Handler:DirectoryHandler
+FontType:Type1
+FontName:GothamBook
+FamilyName:GothamBook
+StyleName:Regular
+FullName:GothamBook
+MenuName:GothamBook
+StyleBits:0
+WritingScript:Roman
+OutlineFileName:C:\Workspace\ZombIdle\visual sfx\Art\Font\Font\Gotham\GothamBook.otf
+DataFormat:sfntData
+UsesStandardEncoding:yes
+isCFF:yes
+FileLength:33360
+FileModTime:1162612150
+WeightClass:500
+WidthClass:5
+AngleClass:0
+NameArray:0,Mac,4,GothamBook
+NameArray:0,Win,1,GothamBook
+%EndFont
+
+%BeginFont
+Handler:DirectoryHandler
+FontType:Type1
+FontName:GothamCondensed-Bold
+FamilyName:Gotham Condensed
+StyleName:Bold
+FullName:Gotham Condensed Bold
+MenuName:Gotham Condensed
+StyleBits:2
+WritingScript:Roman
+OutlineFileName:C:\Workspace\ZombIdle\visual sfx\Art\Font\Font\Gotham\GothamCondensed-Bold.otf
+DataFormat:sfntData
+UsesStandardEncoding:yes
+isCFF:yes
+FileLength:28508
+FileModTime:1178008238
+WeightClass:700
+WidthClass:5
+AngleClass:0
+NameArray:0,Mac,4,Gotham Condensed Bold
+NameArray:0,Win,1,Gotham Condensed
+%EndFont
+
+%BeginFont
+Handler:DirectoryHandler
+FontType:Type1
+FontName:GothamCondensed-Book
+FamilyName:Gotham Condensed Book
+StyleName:Regular
+FullName:Gotham Condensed Book
+MenuName:Gotham Condensed Book
+StyleBits:0
+WritingScript:Roman
+OutlineFileName:C:\Workspace\ZombIdle\visual sfx\Art\Font\Font\Gotham\GothamCondensed-Book.otf
+DataFormat:sfntData
+UsesStandardEncoding:yes
+isCFF:yes
+FileLength:28540
+FileModTime:1178008240
+WeightClass:500
+WidthClass:5
+AngleClass:0
+NameArray:0,Mac,4,Gotham Condensed Book
+NameArray:0,Win,1,Gotham Condensed Book
+%EndFont
+
+%BeginFont
+Handler:DirectoryHandler
+FontType:Type1
+FontName:GothamCondensed-Light
+FamilyName:Gotham Condensed Light
+StyleName:Regular
+FullName:Gotham Condensed Light
+MenuName:Gotham Condensed Light
+StyleBits:0
+WritingScript:Roman
+OutlineFileName:C:\Workspace\ZombIdle\visual sfx\Art\Font\Font\Gotham\GothamCondensed-Light.otf
+DataFormat:sfntData
+UsesStandardEncoding:yes
+isCFF:yes
+FileLength:28524
+FileModTime:1178008240
+WeightClass:300
+WidthClass:5
+AngleClass:0
+NameArray:0,Mac,4,Gotham Condensed Light
+NameArray:0,Win,1,Gotham Condensed Light
+%EndFont
+
+%BeginFont
+Handler:DirectoryHandler
+FontType:Type1
+FontName:GothamCondensed-Medium
+FamilyName:Gotham Condensed
+StyleName:Medium
+FullName:Gotham Condensed Medium
+MenuName:Gotham Condensed
+StyleBits:0
+WritingScript:Roman
+OutlineFileName:C:\Workspace\ZombIdle\visual sfx\Art\Font\Font\Gotham\GothamCondensed-Medium.otf
+DataFormat:sfntData
+UsesStandardEncoding:yes
+isCFF:yes
+FileLength:28564
+FileModTime:1178008240
+WeightClass:500
+WidthClass:5
+AngleClass:0
+NameArray:0,Mac,4,Gotham Condensed Medium
+NameArray:0,Win,1,Gotham Condensed
+%EndFont
+
+%BeginFont
+Handler:DirectoryHandler
+FontType:Type1
+FontName:GothamExLight-Italic
+FamilyName:GothamExLight
+StyleName:Italic
+FullName:GothamExLight Italic
+MenuName:GothamExLight
+StyleBits:1
+WritingScript:Roman
+OutlineFileName:C:\Workspace\ZombIdle\visual sfx\Art\Font\Font\Gotham\GothamExLight-Italic.otf
+DataFormat:sfntData
+UsesStandardEncoding:yes
+isCFF:yes
+FileLength:35216
+FileModTime:1162612150
+WeightClass:500
+WidthClass:5
+AngleClass:0
+NameArray:0,Mac,4,GothamExLight Italic
+NameArray:0,Win,1,GothamExLight
+%EndFont
+
+%BeginFont
+Handler:DirectoryHandler
+FontType:Type1
+FontName:GothamExLight
+FamilyName:GothamExLight
+StyleName:Regular
+FullName:GothamExLight
+MenuName:GothamExLight
+StyleBits:0
+WritingScript:Roman
+OutlineFileName:C:\Workspace\ZombIdle\visual sfx\Art\Font\Font\Gotham\GothamExLight.otf
+DataFormat:sfntData
+UsesStandardEncoding:yes
+isCFF:yes
+FileLength:34028
+FileModTime:1162612150
+WeightClass:500
+WidthClass:5
+AngleClass:0
+NameArray:0,Mac,4,GothamExLight
+NameArray:0,Win,1,GothamExLight
+%EndFont
+
+%BeginFont
+Handler:DirectoryHandler
+FontType:Type1
+FontName:GothamLight-Italic
+FamilyName:GothamLight
+StyleName:Italic
+FullName:GothamLight Italic
+MenuName:GothamLight
+StyleBits:1
+WritingScript:Roman
+OutlineFileName:C:\Workspace\ZombIdle\visual sfx\Art\Font\Font\Gotham\GothamLight-Italic.otf
+DataFormat:sfntData
+UsesStandardEncoding:yes
+isCFF:yes
+FileLength:34124
+FileModTime:1162612150
+WeightClass:500
+WidthClass:5
+AngleClass:0
+NameArray:0,Mac,4,GothamLight Italic
+NameArray:0,Win,1,GothamLight
+%EndFont
+
+%BeginFont
+Handler:DirectoryHandler
+FontType:Type1
+FontName:GothamLight
+FamilyName:GothamLight
+StyleName:Regular
+FullName:GothamLight
+MenuName:GothamLight
+StyleBits:0
+WritingScript:Roman
+OutlineFileName:C:\Workspace\ZombIdle\visual sfx\Art\Font\Font\Gotham\GothamLight.otf
+DataFormat:sfntData
+UsesStandardEncoding:yes
+isCFF:yes
+FileLength:33576
+FileModTime:1162612150
+WeightClass:500
+WidthClass:5
+AngleClass:0
+NameArray:0,Mac,4,GothamLight
+NameArray:0,Win,1,GothamLight
+%EndFont
+
+%BeginFont
+Handler:DirectoryHandler
+FontType:Type1
+FontName:GothamMedium-Italic
+FamilyName:GothamMedium
+StyleName:Italic
+FullName:GothamMedium Italic
+MenuName:GothamMedium
+StyleBits:1
+WritingScript:Roman
+OutlineFileName:C:\Workspace\ZombIdle\visual sfx\Art\Font\Font\Gotham\GothamMedium-Italic.otf
+DataFormat:sfntData
+UsesStandardEncoding:yes
+isCFF:yes
+FileLength:35012
+FileModTime:1162612150
+WeightClass:500
+WidthClass:5
+AngleClass:0
+NameArray:0,Mac,4,GothamMedium Italic
+NameArray:0,Win,1,GothamMedium
+%EndFont
+
+%BeginFont
+Handler:DirectoryHandler
+FontType:Type1
+FontName:GothamMedium
+FamilyName:GothamMedium
+StyleName:Regular
+FullName:GothamMedium
+MenuName:GothamMedium
+StyleBits:0
+WritingScript:Roman
+OutlineFileName:C:\Workspace\ZombIdle\visual sfx\Art\Font\Font\Gotham\GothamMedium.otf
+DataFormat:sfntData
+UsesStandardEncoding:yes
+isCFF:yes
+FileLength:34080
+FileModTime:1162612150
+WeightClass:500
+WidthClass:5
+AngleClass:0
+NameArray:0,Mac,4,GothamMedium
+NameArray:0,Win,1,GothamMedium
+%EndFont
+
+%BeginFont
+Handler:DirectoryHandler
+FontType:Type1
+FontName:GothamNarrow-Book
+FamilyName:Gotham Narrow
+StyleName:Book
+FullName:Gotham Narrow Book
+MenuName:Gotham Narrow Book
+StyleBits:0
+WritingScript:Roman
+OutlineFileName:C:\Workspace\ZombIdle\visual sfx\Art\Font\Font\Gotham\GothamNarrow Book.otf
+DataFormat:sfntData
+UsesStandardEncoding:yes
+isCFF:yes
+FileLength:177824
+FileModTime:315550800
+WeightClass:325
+WidthClass:3
+AngleClass:0
+NameArray:0,Mac,4,Gotham Narrow Book
+NameArray:0,Win,1,Gotham Narrow Book
+NameArray:0,Win,16,Gotham Narrow
+%EndFont
+
+%BeginFont
+Handler:DirectoryHandler
+FontType:Type1
+FontName:GothamNarrow-BookItalic
+FamilyName:Gotham Narrow
+StyleName:Book Italic
+FullName:Gotham Narrow Book Italic
+MenuName:Gotham Narrow Book
+StyleBits:1
+WritingScript:Roman
+OutlineFileName:C:\Workspace\ZombIdle\visual sfx\Art\Font\Font\Gotham\GothamNarrow BookItalic.otf
+DataFormat:sfntData
+UsesStandardEncoding:yes
+isCFF:yes
+FileLength:198228
+FileModTime:315550800
+WeightClass:325
+WidthClass:3
+AngleClass:1
+NameArray:0,Mac,4,Gotham Narrow Book Italic
+NameArray:0,Win,1,Gotham Narrow Book
+NameArray:0,Win,16,Gotham Narrow
+%EndFont
+
+%BeginFont
+Handler:DirectoryHandler
+FontType:Type1
+FontName:GothamThin-Italic
+FamilyName:GothamThin
+StyleName:Italic
+FullName:GothamThin Italic
+MenuName:GothamThin
+StyleBits:1
+WritingScript:Roman
+OutlineFileName:C:\Workspace\ZombIdle\visual sfx\Art\Font\Font\Gotham\GothamThin-Italic.otf
+DataFormat:sfntData
+UsesStandardEncoding:yes
+isCFF:yes
+FileLength:34924
+FileModTime:1162612150
+WeightClass:500
+WidthClass:5
+AngleClass:0
+NameArray:0,Mac,4,GothamThin Italic
+NameArray:0,Win,1,GothamThin
+%EndFont
+
+%BeginFont
+Handler:DirectoryHandler
+FontType:Type1
+FontName:GothamThin
+FamilyName:GothamThin
+StyleName:Regular
+FullName:GothamThin
+MenuName:GothamThin
+StyleBits:0
+WritingScript:Roman
+OutlineFileName:C:\Workspace\ZombIdle\visual sfx\Art\Font\Font\Gotham\GothamThin.otf
+DataFormat:sfntData
+UsesStandardEncoding:yes
+isCFF:yes
+FileLength:33724
+FileModTime:1162612150
+WeightClass:500
+WidthClass:5
+AngleClass:0
+NameArray:0,Mac,4,GothamThin
+NameArray:0,Win,1,GothamThin
+%EndFont
+
+%BeginFont
+Handler:DirectoryHandler
+FontType:Type1
+FontName:GothamUltra-Italic
+FamilyName:GothamUltra
+StyleName:Italic
+FullName:GothamUltra Italic
+MenuName:GothamUltra
+StyleBits:1
+WritingScript:Roman
+OutlineFileName:C:\Workspace\ZombIdle\visual sfx\Art\Font\Font\Gotham\GothamUltra-Italic.otf
+DataFormat:sfntData
+UsesStandardEncoding:yes
+isCFF:yes
+FileLength:35228
+FileModTime:1162612150
+WeightClass:500
+WidthClass:5
+AngleClass:0
+NameArray:0,Mac,4,GothamUltra Italic
+NameArray:0,Win,1,GothamUltra
+%EndFont
+
+%BeginFont
+Handler:DirectoryHandler
+FontType:Type1
+FontName:GothamUltra
+FamilyName:GothamUltra
+StyleName:Regular
+FullName:GothamUltra
+MenuName:GothamUltra
+StyleBits:0
+WritingScript:Roman
+OutlineFileName:C:\Workspace\ZombIdle\visual sfx\Art\Font\Font\Gotham\GothamUltra.otf
+DataFormat:sfntData
+UsesStandardEncoding:yes
+isCFF:yes
+FileLength:34284
+FileModTime:1162612150
+WeightClass:500
+WidthClass:5
+AngleClass:0
+NameArray:0,Mac,4,GothamUltra
+NameArray:0,Win,1,GothamUltra
+%EndFont
+

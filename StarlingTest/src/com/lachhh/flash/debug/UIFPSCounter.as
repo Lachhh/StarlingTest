@@ -1,7 +1,7 @@
 package com.lachhh.flash.debug {
-	import com.infernax.DefaultMainGame;
-	import com.infernax.effect.CallbackTimerEffect;
 	import com.lachhh.lachhhengine.ui.UIBase;
+	import com.zombidle.DefaultMainGame;
+	import com.zombidle.effect.CallbackTimerEffect;
 
 	import flash.text.TextField;
 

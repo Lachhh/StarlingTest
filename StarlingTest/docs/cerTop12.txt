@@ -1,0 +1,6 @@
+openssl x509 -in ios_development.cer -inform DER -out ios_development.pem -outform PEM
+openssl pkcs12 -nocerts -in mykey.p12 -out mykey.pem
+
+openssl pkcs12 -export -in ios_development.pem -out iphone_dev.p12
+
+C:\tools\FlexSDK4_9_1\lib\android\bin\adb.exe devices -l

@@ -187,13 +187,20 @@ package com.lachhh.io {
 		}
 		
 		static public function update():void {			
-			tabOldState = tabState.slice();
+			copyToOld();
 			_mouseMove.x = (_main.mouseX - _mousePos.x);
 			_mouseMove.y = (_main.mouseY - _mousePos.y);
 			_mousePos.x = _main.mouseX;
 			_mousePos.y = _main.mouseY;
 			_oldMouseDown = _mouseDown ;
 		}
+		
+		static private function copyToOld():void {
+			for (var i : int = 0; i < tabState.length; i++) {
+				tabOldState[i] = tabState[i];
+			}
+		}
+		
 		
 		static public function get isInit() : Boolean {
 			return _isInit;

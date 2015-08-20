@@ -1,12 +1,12 @@
 package com.lachhh.flash.debug {
-	import com.infernax.MainGame;
-	import com.infernax.scenes.GameSceneManager;
-	import com.infernax.scenes.SimpleGameScene;
 	import com.lachhh.io.Callback;
 	import com.lachhh.lachhhengine.ActorObjectManager;
 	import com.lachhh.lachhhengine.camera.CameraFlash;
 	import com.lachhh.lachhhengine.sfx.Jukebox;
 	import com.lachhh.lachhhengine.ui.UIBase;
+	import com.zombidle.MainGame;
+	import com.zombidle.scenes.GameSceneManager;
+	import com.zombidle.scenes.SimpleGameScene;
 
 	import flash.geom.Point;
 	import flash.system.System;
@@ -217,8 +217,6 @@ package com.lachhh.flash.debug {
 				var cam:CameraFlash = MainGame.instance.gameSceneManager.gameScene.camera;
 				_objPos.x = MainGame.instance.mouseX + cam.boundsFOV.x;
 				_objPos.y = MainGame.instance.mouseY + cam.boundsFOV.y;
-				//_objPos.x -= CameraFlash.mainCamera.yOffset;
-				_objPos.y -= CameraFlash.mainCamera.yOffset;
 			}
 	
 			child.name = "Mouse Position In World: " + "(" + Math.round(_objPos.x) + "," + Math.round(_objPos.y) + ")";

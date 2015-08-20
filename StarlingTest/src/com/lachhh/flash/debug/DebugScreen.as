@@ -1,8 +1,8 @@
 package com.lachhh.flash.debug {
-	import com.infernax.MainGame;
-	import com.infernax.DefaultMainGame;
 	import com.lachhh.io.KeyManager;
 	import com.lachhh.lachhhengine.ui.UIBase;
+	import com.zombidle.DefaultMainGame;
+	import com.zombidle.MainGame;
 
 	import flash.text.TextField;
 	import flash.text.TextFieldType;
