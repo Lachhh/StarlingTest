@@ -1,4 +1,0 @@
-L:\Programs\Work\FlexSDK4_9_1\lib\android\bin\adb.exe
-install
--r
-L:/Projects/StarlingTest/StarlingTest_Android/release/StarlingTest_Android.apk
