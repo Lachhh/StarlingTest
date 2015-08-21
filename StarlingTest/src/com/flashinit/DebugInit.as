@@ -28,6 +28,7 @@ package com.flashinit {
 			
 			m.startDebug();
 			
+			MainGame.instance.stage.frameRate = 60;
 			
 			Jukebox.MUSIC_VOLUME = 1;
 			Jukebox.SFX_VOLUME = 1;

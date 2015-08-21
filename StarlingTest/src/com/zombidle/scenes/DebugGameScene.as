@@ -1,4 +1,6 @@
 package com.zombidle.scenes {
+	import flash.display.StageScaleMode;
+	import com.zombidle.MainGame;
 	import com.zombidle.starling.StarlingHeroStressTest;
 	import com.berzerkstudio.MetaCachedGOManager;
 	import com.berzerkstudio.flash.display.DisplayObject;

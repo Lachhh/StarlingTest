@@ -24,8 +24,8 @@ package com.zombidle.starling {
 		static public var starlingAssets : AssetManager;
 		static private var callbackOnEndLoad : Callback;
 		static public var metaFlas : MetaFlasAll;
-		static private const StageWidth:int  = 480;
-        static private const StageHeight:int = 320;
+		static private const StageWidth:int  = 1280;//480;
+        static private const StageHeight:int = 720;//320;
 		
 		public function StarlingMain() {
 			
@@ -52,10 +52,11 @@ package com.zombidle.starling {
 		
 		static public function initMobile(stage:Stage, c:Callback):void {
 			callbackOnEndLoad = c;
-			 var iOS:Boolean = SystemUtil.platform == "IOS";
+			var iOS:Boolean = SystemUtil.platform == "IOS";
+			var defaultScaleMode:String = ScaleMode.NO_BORDER; //ScaleMode.SHOW_ALL;
             var stageSize:Rectangle  = new Rectangle(0, 0, StageWidth, StageHeight);
             var screenSize:Rectangle = new Rectangle(0, 0, stage.fullScreenWidth, stage.fullScreenHeight);
-            var viewPort:Rectangle = RectangleUtil.fit(stageSize, screenSize, ScaleMode.SHOW_ALL, iOS);
+            var viewPort:Rectangle = RectangleUtil.fit(stageSize, screenSize, defaultScaleMode, iOS);
             //var scaleFactor:int = viewPort.width < 480 ? 1 : 2; // midway between 320 and 640
 			var scaleFactor:int = 1;
 			
