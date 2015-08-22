@@ -9,6 +9,7 @@ package com.zombidle.starling {
 		[Embed(source="../../../../assets/textures/1x/KnightVisuals_Starling_Texture.png")]
 		public static const KnightVisuals_Starling_Texture : Class;
 		
-		
+		[Embed(source="../../../../assets/fonts/BuzzSawAOE.ttf", embedAsCFF="false", fontFamily="BuzzSaw")]
+		public static const BuzzSawFont : Class;
 	}
 }

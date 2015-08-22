@@ -1,4 +1,5 @@
 package com.zombidle.scenes {
+	import starling.text.TextField;
 	import flash.display.StageScaleMode;
 	import com.zombidle.MainGame;
 	import com.zombidle.starling.StarlingHeroStressTest;
@@ -18,7 +19,6 @@ package com.zombidle.scenes {
 		
 		public var cameraStarling : CameraStarling;
 		private var displayObjectRender : DisplayObjectRenderer;
-		
 		
 		public function DebugGameScene() {
 			super();
@@ -41,6 +41,20 @@ package com.zombidle.scenes {
 			displayObjectRender.displayObject = s;
 			displayObjectRender.displayObjectContainer = StarlingStage.instance;
 			displayObjectRender.start();
+			
+			var textField1:TextField = new TextField(100, 100, "A White Derp", "BuzzSaw", 32, 0xffffff);
+			textField1.x = 200;
+			textField1.y = 200;
+			var textField2:TextField = new TextField(100, 100, "A Green Derp", "BuzzSaw", 32, 0x00ff00);
+			textField2.x = 300;
+			textField2.y = 200;
+			var textField3:TextField = new TextField(100, 100, "A Red Derp", "BuzzSaw", 32, 0xff0000);
+			textField3.x = 400;
+			textField3.y = 200;
+			
+			displayObjectRender.displayObjectContainer.addChild(textField1);
+			displayObjectRender.displayObjectContainer.addChild(textField2);
+			displayObjectRender.displayObjectContainer.addChild(textField3);
 			
 			//img.x = 300;
 			//img.y = 300;

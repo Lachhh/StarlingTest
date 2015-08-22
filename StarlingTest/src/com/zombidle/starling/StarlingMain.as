@@ -110,7 +110,8 @@ package com.zombidle.starling {
 
             assets.verbose = Capabilities.isDebugger;
             assets.enqueue(
-                    appDir.resolvePath(formatString("assets/textures/{0}x", scaleFactor))
+                    appDir.resolvePath(formatString("assets/textures/{0}x", scaleFactor)),
+					appDir.resolvePath("assets/fonts")
             );
 
             // Now, while the AssetManager now contains pointers to all the assets, it actually
