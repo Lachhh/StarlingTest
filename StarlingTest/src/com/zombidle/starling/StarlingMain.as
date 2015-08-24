@@ -1,4 +1,5 @@
 package com.zombidle.starling {
+	import flash.display3D.Context3D;
 	import starling.core.Starling;
 	import starling.events.Event;
 	import starling.textures.RenderTexture;
@@ -24,8 +25,8 @@ package com.zombidle.starling {
 		static public var starlingAssets : AssetManager;
 		static private var callbackOnEndLoad : Callback;
 		static public var metaFlas : MetaFlasAll;
-		static private const StageWidth:int  = 1280;//480;
-        static private const StageHeight:int = 720;//320;
+		static public const StageWidth:int  = 1280;//480;
+        static public const StageHeight:int = 720;//320;
 		
 		public function StarlingMain() {
 			

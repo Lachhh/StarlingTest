@@ -48,11 +48,12 @@ package com.zombidle {
 			stage.focus = null;
 			TextFactory.instance.init();
 			stage.color = 0x000000;
+			stage.frameRate = 60;
 		}
 		
 		public function startFromNormal():void {
 			MetaGameProgress.instance.loadFromLocal();
-			stage.quality = StageQuality.LOW;			
+			stage.quality = StageQuality.LOW;
 		}
 
 		public function startFromIngame():void {

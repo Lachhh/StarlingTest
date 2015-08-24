@@ -1,4 +1,6 @@
 package com.zombidle.starling {
+	import starling.display.QuadBatch;
+	import starling.core.RenderSupport;
 	import flash.geom.Matrix;
 	import flash.geom.Vector3D;
 	import flash.geom.Point;
@@ -33,7 +35,9 @@ package com.zombidle.starling {
 		static private var _txtField:Vector.<TextField> = new Vector.<TextField>(100);
 		static private var _txtFieldIndex:int = -1 ;
 		
-		static public var matrix2dAnchor:Matrix = new Matrix(); 
+		static public var matrix2dAnchor:Matrix = new Matrix();
+		
+		static public var quadBatch:QuadBatch;
 		
 		public function start():void {
 			_startMatrix = Matrix4x4.createIdentity();
@@ -55,10 +59,13 @@ package com.zombidle.starling {
 			
 			_startMatrix.SetColumn(3, c3);
 			//StartCoroutine(DrawCoRoute());
+			
+			quadBatch = new QuadBatch();
+			displayObjectContainer.addChild(quadBatch);
 		}
 				
 		public function Draw():void {
-			
+			quadBatch.reset();
 			_depth = 0 ; 
 			DrawRecur2();
 		}
@@ -110,7 +117,7 @@ package com.zombidle.starling {
 						matrix2dAnchor.identity();
 						matrix2dAnchor.translate(s.anchorX, s.anchorY);
 						matrix2dAnchor.concat(s.transform.concatenedMatrix2D);
-						DrawShape(s, matrix2dAnchor, s.transform.colorTransform );
+						DrawShape(s, matrix2dAnchor, s.transform.colorTransform);
 					} else if(crntDis.isTextfield) {
 						txt = (crntDis as TextField);
 						
@@ -215,20 +222,23 @@ package com.zombidle.starling {
 		private function DrawShape(s:ShapeObject, matrix:Matrix, color:ColorTransform):void {		
 			_depth--;
 			
+			var absDepth:int = Math.abs(_depth);
+			
 			var metaCachedGo:MetaCachedGO = MetaCachedGOManager.getMetaCachedGO(s);//;PrefabManager.getInstance().GetPrefabByShapeObject(s);
 			var ps:starling.display.Image = metaCachedGo.getImage();
 			metaCachedGo.triggerUsed();
 			var concatColor:Color = color.concatColor;
-			
-			if(ps.parent == null) {
-				displayObjectContainer.addChild(ps);
-			}
 			
 			ps.transformationMatrix = matrix;
 			if(color.alphaColor.a < 1 && color.alphaColor.a > 0) {
 				ps.alpha = color.alphaColor.a;
 			} else {
 				ps.alpha = color.alphaColor.a;
+			}
+			
+			if(ps.parent == null) {
+				//displayObjectContainer.addChild(ps);
+				quadBatch.addQuad(ps, ps.alpha, ps.texture);
 			}
 		}
 	}

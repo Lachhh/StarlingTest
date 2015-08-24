@@ -1,4 +1,11 @@
 package com.zombidle.scenes {
+	import starling.core.RenderSupport;
+	import com.zombidle.starling.StarlingMain;
+	import starling.display.DisplayObject;
+	import com.zombidle.starling.MetaFlasAll;
+	import com.zombidle.starling.SymbolManager;
+	import com.berzerkstudio.flash.meta.MetaDisplayObject;
+	import com.berzerkstudio.flash.display.MovieClip;
 	import starling.text.TextField;
 	import flash.display.StageScaleMode;
 	import com.zombidle.MainGame;
@@ -32,9 +39,10 @@ package com.zombidle.scenes {
 			//var img : Image = AtlasKnightVisual.createImg("KNIGHTVISUALS_STARLING_TEXTURE_111") ; 
 			cameraStarling = new CameraStarling();
 			
-			for (var i : int = 0; i < 25; i++) {
+			for (var i : int = 0; i < 75; i++) {
 				new StarlingHeroStressTest();
 			}
+			
 			//new StarlingHeroTest2();
 			
 			displayObjectRender = new DisplayObjectRenderer();
@@ -42,6 +50,7 @@ package com.zombidle.scenes {
 			displayObjectRender.displayObjectContainer = StarlingStage.instance;
 			displayObjectRender.start();
 			
+			/*
 			var textField1:TextField = new TextField(100, 100, "A White Derp", "BuzzSaw", 32, 0xffffff);
 			textField1.x = 200;
 			textField1.y = 200;
@@ -55,7 +64,8 @@ package com.zombidle.scenes {
 			displayObjectRender.displayObjectContainer.addChild(textField1);
 			displayObjectRender.displayObjectContainer.addChild(textField2);
 			displayObjectRender.displayObjectContainer.addChild(textField3);
-			
+			 */
+			 
 			//img.x = 300;
 			//img.y = 300;
 			//StarlingStage.instance.addChild(img);
