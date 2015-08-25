@@ -237,7 +237,7 @@ package com.berzerkstudio {
 					
 					d.transform = new Meta2DTransform();
 					d.transform.LoadFromFromRows(row0, row1);
-					var colorUint:uint = FlashUtils.myParseFloat(colorTransform);
+					//var colorUint:uint = FlashUtils.myParseFloat(colorTransform);
 					
 					d.transform.colorTransform.r = FlashUtils.myParseFloat(aColorTransform[0])/255;
 					d.transform.colorTransform.g = FlashUtils.myParseFloat(aColorTransform[1])/255;

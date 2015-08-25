@@ -1,4 +1,7 @@
 package com.zombidle.starling {
+	import starling.core.Starling;
+	import starling.filters.ColorMatrixFilter;
+	import starling.display.BlendMode;
 	import starling.display.QuadBatch;
 	import starling.core.RenderSupport;
 	import flash.geom.Matrix;
@@ -36,10 +39,9 @@ package com.zombidle.starling {
 		static private var _txtFieldIndex:int = -1 ;
 		
 		static public var matrix2dAnchor:Matrix = new Matrix();
-		
-		static public var quadBatch:QuadBatch;
-		
-		public function start():void {
+		static public var quadBatch : QuadBatch;
+
+		public function start() : void {
 			_startMatrix = Matrix4x4.createIdentity();
 			_startColor = Color.white;
 			startMatrix2d = new Matrix();
@@ -61,7 +63,12 @@ package com.zombidle.starling {
 			//StartCoroutine(DrawCoRoute());
 			
 			quadBatch = new QuadBatch();
+			//quadBatch.batchable = true;
 			displayObjectContainer.addChild(quadBatch);
+			
+			/*cmTest = new ColorMatrixFilter();
+			cmTest.tint(0xFF0000);
+			cmTest.adjustSaturation(1);*/
 		}
 				
 		public function Draw():void {
@@ -114,8 +121,14 @@ package com.zombidle.starling {
 					 
 					if(crntDis.isShape) {
 						s = (crntDis as ShapeObject);
-						matrix2dAnchor.identity();
-						matrix2dAnchor.translate(s.anchorX, s.anchorY);
+						//matrix2dAnchor.identity();
+						matrix2dAnchor.a = 1;
+						matrix2dAnchor.b = 0;
+						matrix2dAnchor.c = 0;
+						matrix2dAnchor.d = 1;
+						matrix2dAnchor.tx = s.anchorX;
+						matrix2dAnchor.ty = s.anchorY;
+						//matrix2dAnchor.translate(s.anchorX, s.anchorY);
 						matrix2dAnchor.concat(s.transform.concatenedMatrix2D);
 						DrawShape(s, matrix2dAnchor, s.transform.colorTransform);
 					} else if(crntDis.isTextfield) {
@@ -220,26 +233,40 @@ package com.zombidle.starling {
 		
 		
 		private function DrawShape(s:ShapeObject, matrix:Matrix, color:ColorTransform):void {		
-			_depth--;
+			_depth++;
 			
-			var absDepth:int = Math.abs(_depth);
+			//var absDepth:int = Math.abs(_depth);
 			
 			var metaCachedGo:MetaCachedGO = MetaCachedGOManager.getMetaCachedGO(s);//;PrefabManager.getInstance().GetPrefabByShapeObject(s);
 			var ps:starling.display.Image = metaCachedGo.getImage();
-			metaCachedGo.triggerUsed();
-			var concatColor:Color = color.concatColor;
+			//var concatColor:Color = color.concatColor;
 			
 			ps.transformationMatrix = matrix;
-			if(color.alphaColor.a < 1 && color.alphaColor.a > 0) {
-				ps.alpha = color.alphaColor.a;
-			} else {
-				ps.alpha = color.alphaColor.a;
-			}
+			//if(color.alphaColor.a < 1 && color.alphaColor.a > 0) {
+			//ps.alpha = color.alphaColor.a;
+			//} else {
+				//ps.alpha = color.alphaColor.a;
+			//}
 			
-			if(ps.parent == null) {
+			//Starling.current.getProgram(name)
+			
+			//if(ps.parent == null) {
 				//displayObjectContainer.addChild(ps);
-				quadBatch.addQuad(ps, ps.alpha, ps.texture);
-			}
+			/*if(_depth <= 50) {
+				displayObjectContainer.addChild(ps)
+				ps.filter = cmTest;
+			} else {*/
+				quadBatch.addImage(ps, ps.alpha);
+				//if(_depth <= 50) {
+					//quadBatch.blendMode = BlendMode.SCREEN;
+					
+					/*quadBatch.setVertexColor(_depth-1, 0, 0xff0000);
+					quadBatch.setVertexColor(_depth-1, 1, 0xff0000);
+					quadBatch.setVertexColor(_depth-1, 2, 0xff0000);
+					quadBatch.setVertexColor(_depth-1, 3, 0xff0000);*/
+				//}
+			//}
+			//}
 		}
 	}
 }

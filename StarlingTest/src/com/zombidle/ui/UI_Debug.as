@@ -22,19 +22,23 @@ package com.zombidle.ui {
 			super(AnimationFactory.ID_UI_DEBUG);
 			uiFPS = new UIFPSCounter();
 			uiFPS.py = 40;
+			refresh();
 		}
 		
 		
 		override public function refresh() : void {
 			super.refresh();
 			texturesTxt.text = "Num Textures On Screen : " + StarlingStage.instance.numChildren;
-			numCachedGOTxt.text = "Num Hero : " + MainGame.instance.gameSceneManager.gameScene.heroManager.actorList.length;		
+			numCachedGOTxt.text = "Num Hero : " + MainGame.instance.gameSceneManager.gameScene.heroManager.actorList.length ;
+			/*if(visual.stage) {
+				numCachedGOTxt.text = "Stage : " + visual.stage.fullScreenWidth + "x" + visual.stage.fullScreenHeight;		
+			}*/
 		}
 		
 		
 		override public function update() : void {
 			super.update();
-			refresh();
+			//refresh();
 			
 			if(KeyManager.IsKeyPressed(Keyboard.ENTER)) {
 				for (var i : int = 0; i < 5; i++) {

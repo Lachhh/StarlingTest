@@ -33,13 +33,13 @@ package com.zombidle.scenes {
 
 		override public function start() : void {
 			super.start();
-			new UI_Debug();
+			
 			var s:Stage = new Stage();
 			
 			//var img : Image = AtlasKnightVisual.createImg("KNIGHTVISUALS_STARLING_TEXTURE_111") ; 
 			cameraStarling = new CameraStarling();
 			
-			for (var i : int = 0; i < 75; i++) {
+			for (var i : int = 0; i < 450; i++) {
 				new StarlingHeroStressTest();
 			}
 			
@@ -75,6 +75,7 @@ package com.zombidle.scenes {
 			//camera.py = 650;
 
 			//camera.addComponent(new LogicMoveWithKeyBoard());
+			new UI_Debug();
 		}
 
 		override public function update() : void {

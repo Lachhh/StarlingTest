@@ -40,24 +40,20 @@ package com.berzerkstudio {
 		static private var _voidPos : Vector3 = new Vector3(-1000, -1000, -1000);
 		static private var _zero : Vector3 = Vector3.zero;
 		public var isNull : Boolean = false;
-
-		public function triggerUsed() : void {
-			lifeCached = LIFE_CACHED;
-			isCached = false;
-		}
 		
 		public function init(d:com.berzerkstudio.flash.display.ShapeObject):void {
 			shapeObject = d;
 			shapeObject.metaGo = this;
+			lifeCached = LIFE_CACHED;
 			isCached = false;
 		}
 		
 		public function onCache():void {
 			if(isCached) return ;
 			
-			if(starlingImage != null && starlingImage.parent) {
+			if(starlingImage != null) {
 				//starlingImage.parent.removeChild(starlingImage);
-				starlingImage.visible = false;
+				//starlingImage.visible = false;
 				AtlasKnightVisual.cacheImage(starlingImage);
 				//starlingImage.visible = false;
 			}

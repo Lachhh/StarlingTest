@@ -15,18 +15,19 @@ package com.zombidle.starling {
 			MainGame.instance.gameSceneManager.gameScene.heroManager.add(this);
 			renderStarling = addComponent(new RenderDisplayComponent(Stage.instance)) as RenderDisplayComponent;
 			renderStarling.animView.setAnim("HERO_RUN");
+			
 			(renderStarling.animView.anim as MovieClip).gotoAndPlay(Math.ceil(Math.random()*10));
 			physicComponent = PhysicComponent.addToActor(this);
 			physicComponent.vx = Math.random()*5+3;
 			physicComponent.gravY = 0;
-			py = 100 + Math.random()*600;
+			py = 50 + Math.random()*700;
 		}
 
 		override public function update() : void {
 			super.update();
 			if(px >= 1400) {
 				px = -200;
-				py = 100 + Math.random()*600;
+				py = 50 + Math.random()*800;
 			}
 		}
 	}
