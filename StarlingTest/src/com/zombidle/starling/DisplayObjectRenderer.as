@@ -1,8 +1,8 @@
 package com.zombidle.starling {
+	import starling.display.QuadBatch;
 	import starling.core.Starling;
 	import starling.filters.ColorMatrixFilter;
 	import starling.display.BlendMode;
-	import starling.display.QuadBatch;
 	import starling.core.RenderSupport;
 	import flash.geom.Matrix;
 	import flash.geom.Vector3D;
@@ -40,6 +40,7 @@ package com.zombidle.starling {
 		
 		static public var matrix2dAnchor:Matrix = new Matrix();
 		static public var quadBatch : QuadBatch;
+		static public var tintFilter:ColorMatrixFilter;
 
 		public function start() : void {
 			_startMatrix = Matrix4x4.createIdentity();
@@ -65,6 +66,34 @@ package com.zombidle.starling {
 			quadBatch = new QuadBatch();
 			//quadBatch.batchable = true;
 			displayObjectContainer.addChild(quadBatch);
+			
+			// TODO: Figure out what all this means
+			// Tinting the quadbatch!
+			// http://forum.starling-framework.org/topic/is-there-a-way-to-minic-colortransform
+			// http://doc.starling-framework.org/current/starling/filters/ColorMatrixFilter.html
+			
+			var red:Number = 1;
+			var blue:Number = 1;
+			var green:Number = 1;
+			
+			var redOffset:Number = 1;
+			var blueOffset:Number = 1;
+			var greenOffset:Number = 1;
+			var alpha:Number = 1;
+			
+			// this is building a colortransform... apparently
+			var matrix:Vector.<Number> = new <Number>[1 + redOffset/255, 0, 0, 0, 0,
+													  0, 1 + greenOffset/255, 0, 0, 0,
+													  0, 0, 1 + blueOffset/255, 0, 0,
+													  0, 0, 0, 1, 0];
+			
+			//tintFilter = new ColorMatrixFilter(matrix);
+			tintFilter = new ColorMatrixFilter();
+			tintFilter.tint(0xff0000, 1); // literally says "analagous to flash pro tinting"
+			tintFilter.adjustBrightness(0.0); // "tinting with white or black"
+			
+			
+			quadBatch.filter = tintFilter;
 			
 			/*cmTest = new ColorMatrixFilter();
 			cmTest.tint(0xFF0000);
@@ -242,6 +271,12 @@ package com.zombidle.starling {
 			//var concatColor:Color = color.concatColor;
 			
 			ps.transformationMatrix = matrix;
+			
+			//var tint:uint = ((1.0 << 16) | (color.greenMultiplier << 8) | (color.blueMultiplier));
+			//tintFilter.tint(tint, color.alphaColor.a);
+			
+			//ps.filter = tintFilter;
+			
 			//if(color.alphaColor.a < 1 && color.alphaColor.a > 0) {
 			//ps.alpha = color.alphaColor.a;
 			//} else {
