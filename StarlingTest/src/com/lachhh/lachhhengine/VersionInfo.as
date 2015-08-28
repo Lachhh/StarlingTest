@@ -4,6 +4,7 @@ package com.lachhh.lachhhengine {
 	 */
 	public class VersionInfo {
 		static public var isDebug:Boolean = false;
+		static public var isPIODebug:Boolean = false;
 		
 		static public var zelda2FunnyGameOver:Boolean = false;
 		static public var removeStuffThatArentFinished:Boolean = false;

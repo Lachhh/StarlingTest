@@ -71,7 +71,7 @@ package com.zombidle.starling {
 			// Tinting the quadbatch!
 			// http://forum.starling-framework.org/topic/is-there-a-way-to-minic-colortransform
 			// http://doc.starling-framework.org/current/starling/filters/ColorMatrixFilter.html
-			
+			/*
 			var red:Number = 1;
 			var blue:Number = 1;
 			var green:Number = 1;
@@ -87,13 +87,13 @@ package com.zombidle.starling {
 													  0, 0, 1 + blueOffset/255, 0, 0,
 													  0, 0, 0, 1, 0];
 			
-			//tintFilter = new ColorMatrixFilter(matrix);
+			tintFilter = new ColorMatrixFilter(matrix);
 			tintFilter = new ColorMatrixFilter();
 			tintFilter.tint(0xff0000, 1); // literally says "analagous to flash pro tinting"
 			tintFilter.adjustBrightness(0.0); // "tinting with white or black"
 			
-			
 			quadBatch.filter = tintFilter;
+			*/
 			
 			/*cmTest = new ColorMatrixFilter();
 			cmTest.tint(0xFF0000);

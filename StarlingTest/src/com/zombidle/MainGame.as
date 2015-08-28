@@ -1,4 +1,7 @@
 package com.zombidle {
+	import com.chestapp.playerio.ModelExternalPremiumAPIEnum;
+	import com.chestapp.PlayerIOLachhhRPGController;
+	import com.zombidle.scenes.ChestAppLoginScene;
 	import com.lachhh.flash.RightClickMenu;
 	import com.lachhh.flash.debug.UIFPSCounter;
 	import com.lachhh.flash.debug.UIFontLoopkup;
@@ -47,8 +50,12 @@ package com.zombidle {
 
 			stage.focus = null;
 			TextFactory.instance.init();
-			stage.color = 0x000000;
+			//stage.color = 0x000000;
+			stage.color = 0x1c2429;
 			stage.frameRate = 60;
+			
+			PlayerIOLachhhRPGController.InitInstance(root, ModelExternalPremiumAPIEnum.TWITCH, VersionInfo.isPIODebug);
+			MetaGameProgress.instance.loadFromLocal();
 		}
 		
 		public function startFromNormal():void {
@@ -69,7 +76,8 @@ package com.zombidle {
 		}
 		
 		private function startStarlingScene():void {
-			gameSceneManager.loadScene(new DebugGameScene());
+			//gameSceneManager.loadScene(new DebugGameScene());
+			gameSceneManager.loadScene(new ChestAppLoginScene());
 		}
 		
 		
