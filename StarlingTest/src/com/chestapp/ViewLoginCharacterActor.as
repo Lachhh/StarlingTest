@@ -1,4 +1,6 @@
 package com.chestapp {
+	import com.lachhh.lachhhengine.components.PhysicComponent;
+	import com.lachhh.io.Callback;
 	import com.zombidle.starling.StarlingMain;
 	import com.berzerkstudio.flash.display.MovieClip;
 	import com.berzerkstudio.flash.display.Stage;
@@ -7,13 +9,15 @@ package com.chestapp {
 	/**
 	 * @author Shayne
 	 */
-	public class ViewChestActor extends Actor {
+	public class ViewLoginCharacterActor extends Actor {
 		
 		public var render:RenderDisplayComponent;
 		
 		public var loopAnim:Boolean = true;
 		
-		public function ViewChestActor(){
+		private var animFinishedCallback:Callback;
+		
+		public function ViewLoginCharacterActor(){
 			super();
 			render = addComponent(new RenderDisplayComponent(Stage.instance)) as RenderDisplayComponent;
 			
@@ -21,6 +25,18 @@ package com.chestapp {
 			this.py = StarlingMain.StageHeight / 2;
 			
 			playRun();
+		}
+		
+		public function setAnimFinishedCallback(c:Callback):void{
+			animFinishedCallback = c;
+		}
+		
+		public function playRunOffScreen(c:Callback):void{
+			animFinishedCallback = c;
+			playRun();
+			physicComponent = PhysicComponent.addToActor(this);
+			physicComponent.vx = 10;
+			physicComponent.gravY = 0;
 		}
 		
 		public function playRun():void{
@@ -53,6 +69,14 @@ package com.chestapp {
 			(render.animView.anim as MovieClip).gotoAndPlay(0);
 		}
 		
+		private function callAndRemoveCallback():void{
+			if(animFinishedCallback){
+				var callback:Callback = animFinishedCallback;
+				animFinishedCallback = null;
+				callback.call();
+			}
+		}
+		
 		override public function update():void{
 			super.update();
 			
@@ -60,6 +84,12 @@ package com.chestapp {
 			
 			if(mc.currentFrame == mc.totalFrames && !loopAnim){
 				mc.stop();
+				callAndRemoveCallback();
+			}
+			
+			if(px >= StarlingMain.StageWidth + 100) {
+				physicComponent.vx = 0;
+				callAndRemoveCallback();
 			}
 		}
 	}

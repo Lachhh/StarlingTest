@@ -1,4 +1,5 @@
 package com.zombidle {
+	import com.zombidle.scenes.CollectChestScene;
 	import com.chestapp.playerio.ModelExternalPremiumAPIEnum;
 	import com.chestapp.PlayerIOLachhhRPGController;
 	import com.zombidle.scenes.ChestAppLoginScene;
@@ -25,6 +26,8 @@ package com.zombidle {
 		
 		static public var dummyActor:Actor = new Actor();
 		static public var fpsCounter:UIFPSCounter ;
+		
+		
 		
 		
 		public function MainGame() {
@@ -78,6 +81,7 @@ package com.zombidle {
 		private function startStarlingScene():void {
 			//gameSceneManager.loadScene(new DebugGameScene());
 			gameSceneManager.loadScene(new ChestAppLoginScene());
+			//gameSceneManager.loadScene(new CollectChestScene());
 		}
 		
 		

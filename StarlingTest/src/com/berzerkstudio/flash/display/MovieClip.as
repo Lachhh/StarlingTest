@@ -161,7 +161,7 @@ package com.berzerkstudio.flash.display {
 						} else {
 							displayObject.toBeRemovedInternal = false;
 							//if(displayObject.childIndex != i) {
-								addChildAt(displayObject, i);	
+								addChildAt(displayObject, i);
 							//}
 						}
 						

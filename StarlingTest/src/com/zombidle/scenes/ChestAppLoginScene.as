@@ -1,4 +1,5 @@
 package com.zombidle.scenes {
+	import com.zombidle.MainGame;
 	import com.chestapp.meta.server.MetaServerProgress;
 	import com.chestapp.PlayerIOLachhhRPGController;
 	import flash.filesystem.FileMode;
@@ -8,7 +9,7 @@ package com.zombidle.scenes {
 	import com.chestapp.MobileTwitchConnection;
 	import com.zombidle.starling.StarlingMain;
 	import starling.text.TextField;
-	import com.chestapp.ViewChestActor;
+	import com.chestapp.ViewLoginCharacterActor;
 	import com.berzerkstudio.MetaCachedGOManager;
 	import com.zombidle.starling.StarlingStage;
 	import com.berzerkstudio.flash.display.Stage;
@@ -24,11 +25,10 @@ package com.zombidle.scenes {
 		public var cameraStarling : CameraStarling;
 		private var displayObjectRender : DisplayObjectRenderer;
 		
-		private var chestActor:ViewChestActor;
+		private var loginActor:ViewLoginCharacterActor;
 		
-		private var text:TextField;
-		
-		private var accessToken:String = null;
+		private var statusText:TextField;
+		private var isTransitioning:Boolean = false;
 		
 		public function ChestAppLoginScene() {
 			super();
@@ -46,16 +46,16 @@ package com.zombidle.scenes {
 			displayObjectRender.displayObjectContainer = StarlingStage.instance;
 			displayObjectRender.start();
 			
-			chestActor = new ViewChestActor();
+			loginActor = new ViewLoginCharacterActor();
 			
 			var px:Number = StarlingMain.StageWidth;
 			var py:Number = StarlingMain.StageHeight;
 			
 			py += 100;
 			
-			text = new TextField(px, py, "Loading Twitch...", "BuzzSaw", 24, 0xffffff, false);
+			statusText = new TextField(px, py, "Loading twitch...", "BuzzSaw", 24, 0xffffff, false);
 			
-			StarlingStage.instance.addChild(text);
+			StarlingStage.instance.addChild(statusText);
 			
 			var token:String = loadTokenFromFile();
 			
@@ -70,22 +70,37 @@ package com.zombidle.scenes {
 		
 		public override function update():void{
 			super.update();
-			chestActor.update();
+			loginActor.update();
+			
+			if(isTransitioning){
+				statusText.y += 5;
+			}
+			
 			displayObjectRender.Draw();
 			MetaCachedGOManager.update();
 		}
 		
+		private function heroIsOffScreen():void{
+			MainGame.instance.gameSceneManager.loadScene(new CollectChestScene(MetaServerProgress.instance.metaPlayer));
+		}
+		
+		private function heroRunOffScreen():void{
+			loginActor.playRunOffScreen(new Callback(heroIsOffScreen, this, null));
+			isTransitioning = true;
+		}
+		
 		private function setSuccess(name:String):void{
-			text.text = "Done!";
+			statusText.text = "Welcome " + name + "!";
 			trace(name);
-			chestActor.playVictory();
+			loginActor.playVictory();
+			loginActor.setAnimFinishedCallback(new Callback(heroRunOffScreen, this, null));
 		}
 		
 		private function onTwitchConnected(token:String):void{
 			trace(token);
 			writeTokenToFile(token);
 			
-			text.text = "Connecting to Servers...";
+			statusText.text = "Connecting to Servers...";
 			
 			PlayerIOLachhhRPGController.getInstance().mySecuredConnection.SecureConnectTwitch(token, new Callback(onLoginSuccess, this, null), new Callback(onLoginError, this, null)); 
 		}
@@ -93,7 +108,7 @@ package com.zombidle.scenes {
 		private function onLoginSuccess() : void {
 			trace("SUCCESS");
 			
-			text.text = "Connecting to GameRoom...";
+			statusText.text = "Connecting to GameRoom...";
 			
 			PlayerIOLachhhRPGController.getInstance().mySecuredConnection.connectToGameRoom(new Callback(onConnectedToGame, this, null));
 		}
@@ -103,7 +118,7 @@ package com.zombidle.scenes {
 		}
 		
 		private function onConnectedToGame():void {
-			text.text = "Loading character data...";
+			statusText.text = "Loading character data...";
 			
 			MetaServerProgress.instance.loadMyCharacter(new Callback(onLoadCharacterComplete, this, null), new Callback(onLoginError, this, null));
 		}
@@ -141,8 +156,8 @@ package com.zombidle.scenes {
 		}
 		
 		private function onError():void{
-			text.text = "Error!";
-			chestActor.playDead();
+			statusText.text = "Error!";
+			loginActor.playDead();
 		}
 	}
 }
