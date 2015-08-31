@@ -12,7 +12,7 @@ package com.berzerkstudio.flash.display {
 		private var _text:String;
 		public var textId:int;
 		
-		public var color:Color = new Color();
+		public var color:uint;
 		
 		public var size:Number;
 		
@@ -52,10 +52,12 @@ package com.berzerkstudio.flash.display {
 				_text = m.text;
 			}
 			
-			color[0] = m.r;
-			color[1] = m.g;
-			color[2] = m.b;
-			color[3] = 1;
+			//color[0] = m.r;
+			//color[1] = m.g;
+			//color[2] = m.b;
+			//color[3] = 1;
+			
+			color = Color.rgb(m.r * 255, m.g * 255, m.b * 255);
 			
 			size = m.textSize;
 			textColorUsed = false;

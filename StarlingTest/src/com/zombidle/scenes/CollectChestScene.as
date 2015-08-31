@@ -1,4 +1,5 @@
 package com.zombidle.scenes {
+	import com.berzerkstudio.flash.meta.MetaDisplayObject;
 	import flash.geom.Rectangle;
 	import starling.events.TouchEvent;
 	import flash.events.TimerEvent;
@@ -56,6 +57,8 @@ package com.zombidle.scenes {
 		
 		private var tickTimer:Timer;
 		
+		private var DEBUG_berzerkTextField:com.berzerkstudio.flash.display.TextField;
+		
 		public function CollectChestScene(player:MetaPlayer) {
 			super();
 			
@@ -69,6 +72,22 @@ package com.zombidle.scenes {
 			displayObjectRender.displayObject = s;
 			displayObjectRender.displayObjectContainer = StarlingStage.instance;
 			displayObjectRender.start();
+			
+			DEBUG_berzerkTextField = new com.berzerkstudio.flash.display.TextField();
+			var meta:MetaDisplayObject = new MetaDisplayObject();
+			meta.fontName = "BuzzSaw";
+			meta.r = 1;
+			meta.g = 1;
+			meta.b = 1;
+			meta.textSize = 24;
+			meta.width = 200;
+			meta.height = 200;
+			meta.text = "I am a berzerk textfield!";
+			meta.textAlign = "c";
+			DEBUG_berzerkTextField.LoadFromMeta(meta);
+			DEBUG_berzerkTextField.x = (StarlingMain.StageWidth / 2) - 400;
+			DEBUG_berzerkTextField.y = (StarlingMain.StageHeight / 2);
+			s.addChild(DEBUG_berzerkTextField);
 			
 			chestActor = new ViewLoginCharacterActor();
 			chestActor.playIdle();

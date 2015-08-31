@@ -1,4 +1,6 @@
 package com.zombidle.starling {
+	import starling.utils.Color;
+	import starling.text.TextField;
 	import starling.display.QuadBatch;
 	import starling.core.Starling;
 	import starling.filters.ColorMatrixFilter;
@@ -29,22 +31,25 @@ package com.zombidle.starling {
 		public var displayObject:com.berzerkstudio.flash.display.DisplayObject ;
 		static private var startMatrix2d:Matrix;
 		static private var _startMatrix:Matrix4x4;
-		static private var _startColor:Color;
+		static private var _startColor:com.berzerkstudio.flash.geom.Color;
 		static private var _depth:int = 0;
 		
 		static private var _tempVecSE:Vector3 = new Vector3(0,0,0);
 		static private var _tempVecNW:Vector3 = new Vector3(0,0,0);
 		
-		static private var _txtField:Vector.<TextField> = new Vector.<TextField>(100);
+		static private var _txtField:Vector.<com.berzerkstudio.flash.display.TextField> = new Vector.<com.berzerkstudio.flash.display.TextField>(100);
 		static private var _txtFieldIndex:int = -1 ;
 		
 		static public var matrix2dAnchor:Matrix = new Matrix();
 		static public var quadBatch : QuadBatch;
 		static public var tintFilter:ColorMatrixFilter;
+		
+		static public var starlingTextFields:Vector.<starling.text.TextField> = new Vector.<starling.text.TextField>;
+		static public var currentTextFields:int = -1;
 
 		public function start() : void {
 			_startMatrix = Matrix4x4.createIdentity();
-			_startColor = Color.white;
+			_startColor = com.berzerkstudio.flash.geom.Color.white;
 			startMatrix2d = new Matrix();
 			startMatrix2d.tx = 0;
 			startMatrix2d.ty = 0;
@@ -119,10 +124,12 @@ package com.zombidle.starling {
 			var s:ShapeObject ;
 			var dc:com.berzerkstudio.flash.display.DisplayObjectContainer ;
 			var child:com.berzerkstudio.flash.display.DisplayObject ;
-			var txt:TextField ;
+			var txt:com.berzerkstudio.flash.display.TextField ;
 			var mustUpdateConcatened:Boolean = false;
 			var childTransform:Transform2D ;
 			var crntTransform:Transform2D ;
+			
+			CleanTextFields();
 			
 			_txtFieldIndex = -1;
 			while(childLeft > 0){
@@ -161,8 +168,10 @@ package com.zombidle.starling {
 						matrix2dAnchor.concat(s.transform.concatenedMatrix2D);
 						DrawShape(s, matrix2dAnchor, s.transform.colorTransform);
 					} else if(crntDis.isTextfield) {
-						txt = (crntDis as TextField);
+						txt = (crntDis as com.berzerkstudio.flash.display.TextField);
+						HandleStarlingTextField(txt, GetStarlingTextField());
 						
+						/*
 						if(inBatch) {
 							_txtFieldIndex++;
 							_txtField[_txtFieldIndex] = txt;
@@ -170,6 +179,7 @@ package com.zombidle.starling {
 						} else {
 							//DrawTextField(txt, txt.transform.concatenedMatrix, txt.transform.colorTransform);
 						}
+						*/
 						
 						txt.onEnterFrame();
 						
@@ -229,8 +239,44 @@ package com.zombidle.starling {
 			DrawTextFieldBatch();
 		}
 		
+		function CleanTextFields():void{
+			for each(var txt:starling.text.TextField in starlingTextFields){
+				txt.visible = false;
+			}
+			currentTextFields = -1;
+		}
+		
+		function GetStarlingTextField():starling.text.TextField{
+			currentTextFields++;
+			var txt:starling.text.TextField;
+			if(starlingTextFields.length > currentTextFields){
+				txt = starlingTextFields[currentTextFields];
+			}
+			else{
+				txt = new starling.text.TextField(500, 500, "null");
+				starlingTextFields.push(txt);
+				displayObjectContainer.addChild(txt);
+			}
+			return txt;
+		}
+		
+		function HandleStarlingTextField(textFrom:com.berzerkstudio.flash.display.TextField, textTo:starling.text.TextField):void{
+			textTo.visible = true;
+			textTo.width = textFrom.width;
+			textTo.height = textFrom.height;
+			textTo.x = textFrom.x;
+			textTo.y = textFrom.y;
+			textTo.text = textFrom.text;
+			textTo.fontName = textFrom.fontName;
+			textTo.fontSize = textFrom.size;
+			textTo.color = textFrom.color;
+			
+			// DEBUG
+			textTo.border = true;
+		}
+		
 		function DrawTextFieldBatch():void {
-			var txtField:TextField ;
+			var txtField:com.berzerkstudio.flash.display.TextField ;
 			var fontName:String ;
 			var fontSet:Boolean ;
 			var i:int = 0 ; 
@@ -258,8 +304,6 @@ package com.zombidle.starling {
 			}
 			_txtFieldIndex = -1;
 		}
-		
-		
 		
 		private function DrawShape(s:ShapeObject, matrix:Matrix, color:ColorTransform):void {		
 			_depth++;

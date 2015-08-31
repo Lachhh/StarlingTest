@@ -1,4 +1,5 @@
 package com.zombidle.scenes {
+	import com.berzerkstudio.flash.meta.MetaDisplayObject;
 	import com.zombidle.MainGame;
 	import com.chestapp.meta.server.MetaServerProgress;
 	import com.chestapp.PlayerIOLachhhRPGController;
@@ -48,12 +49,14 @@ package com.zombidle.scenes {
 			
 			loginActor = new ViewLoginCharacterActor();
 			
-			var px:Number = StarlingMain.StageWidth;
-			var py:Number = StarlingMain.StageHeight;
+			var px:Number = StarlingMain.StageWidth / 2;
+			var py:Number = StarlingMain.StageHeight / 2;
 			
-			py += 100;
+			px -= 100;
 			
-			statusText = new TextField(px, py, "Loading twitch...", "BuzzSaw", 24, 0xffffff, false);
+			statusText = new TextField(200, 100, "Loading twitch...", "BuzzSaw", 24, 0xffffff, false);
+			statusText.x = px;
+			statusText.y = py;
 			
 			StarlingStage.instance.addChild(statusText);
 			
