@@ -1,4 +1,5 @@
 package com.chestapp {
+	import com.lachhh.lachhhengine.VersionInfo;
 	import flash.net.dns.AAAARecord;
 	import flash.events.LocationChangeEvent;
 	import starling.core.Starling;
@@ -28,7 +29,18 @@ package com.chestapp {
 		}
 		
 		private function connect(url:String):void{
-			webView.viewPort = new Rectangle(0, 0, StarlingMain.StageWidth, StarlingMain.StageHeight);
+			var height:int;
+			var width:int;
+			if(VersionInfo.isIOS){
+				height = Starling.current.nativeStage.fullScreenHeight;
+				width = Starling.current.nativeStage.fullScreenWidth;
+			}
+			else{
+				height = StarlingMain.StageHeight;
+				width = StarlingMain.StageWidth;
+			}
+			
+			webView.viewPort = new Rectangle(0, 0, width, height);
 			webView.stage = Starling.current.nativeStage;
 			
 			webView.loadURL(url);
