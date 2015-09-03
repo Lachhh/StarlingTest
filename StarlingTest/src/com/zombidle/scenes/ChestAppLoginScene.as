@@ -28,7 +28,7 @@ package com.zombidle.scenes {
 		
 		private var loginActor:ViewLoginCharacterActor;
 		
-		private var statusText:TextField;
+		private var statusText:com.berzerkstudio.flash.display.TextField;
 		private var isTransitioning:Boolean = false;
 		
 		public function ChestAppLoginScene() {
@@ -47,18 +47,27 @@ package com.zombidle.scenes {
 			displayObjectRender.displayObjectContainer = StarlingStage.instance;
 			displayObjectRender.start();
 			
-			loginActor = new ViewLoginCharacterActor();
-			
 			var px:Number = StarlingMain.StageWidth / 2;
 			var py:Number = StarlingMain.StageHeight / 2;
-			
 			px -= 100;
 			
-			statusText = new TextField(200, 100, "Loading twitch...", "BuzzSaw", 24, 0xffffff, false);
+			statusText = new com.berzerkstudio.flash.display.TextField();
+			var meta:MetaDisplayObject = new MetaDisplayObject();
+			meta.fontName = "BuzzSaw";
+			meta.r = 1;
+			meta.g = 1;
+			meta.b = 1;
+			meta.textSize = 24;
+			meta.width = 200;
+			meta.height = 100;
+			meta.text = "Loading twitch...";
+			meta.textAlign = "c";
+			statusText.LoadFromMeta(meta);
 			statusText.x = px;
 			statusText.y = py;
+			s.addChild(statusText);
 			
-			StarlingStage.instance.addChild(statusText);
+			loginActor = new ViewLoginCharacterActor();
 			
 			var token:String = loadTokenFromFile();
 			
@@ -158,9 +167,19 @@ package com.zombidle.scenes {
 			}
 		}
 		
+		private function deleteTokenFile():void{
+			var file:File = File.applicationStorageDirectory;
+			file = file.resolvePath("twitchtoken.txt");
+			
+			if(file.exists){
+				file.deleteFile();
+			}
+		}
+		
 		private function onError():void{
-			statusText.text = "Error!";
+			statusText.text = "Mistakes were made.";
 			loginActor.playDead();
+			deleteTokenFile();
 		}
 	}
 }

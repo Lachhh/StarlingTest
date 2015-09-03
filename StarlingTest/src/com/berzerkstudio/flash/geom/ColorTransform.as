@@ -35,6 +35,31 @@ package com.berzerkstudio.flash.geom {
 			return concatColor;
 		}
 		
+		/**
+		 * Sets the tint!
+		 * RGB values are 0-255, a is from 0-1.
+		 */
+		public function SetTint(r:Number, g:Number, b:Number, a:Number):void{
+			redMultiplier = 1.0 - a;
+			greenMultiplier = 1.0 - a;
+			blueMultiplier = 1.0 - a;
+			redOffset = a * r;
+			greenOffset = a * g;
+			blueOffset = a * b;
+		}
+		
+		/**
+		 * Returns a ShaderQuadBatch friendly color matrix.
+		 * Builds a new matrix every time, DO NOT CALL EVERY FRAME!
+		 */
+		public function ToColorMatrix():Vector.<Number>{
+			return new <Number>[redMultiplier, 0, 0, 0,
+								0, greenMultiplier, 0, 0,
+								0, 0, blueMultiplier, 0,
+								0, 0, 0, alphaMultiplier,
+								redOffset / 255, greenOffset / 255, blueOffset / 255, alphaOffset / 255];
+		}
+		
 		public function LoadFromColorTransform(metaColor:MetaColorTransform):void {
 			/*redOffset = metaColor.redOffset;
 			redMultiplier = metaColor.redMultiplier;
