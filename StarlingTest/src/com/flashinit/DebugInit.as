@@ -1,4 +1,5 @@
 package com.flashinit {
+	import flash.display.StageDisplayState;
 	import com.lachhh.lachhhengine.VersionInfo;
 	import com.lachhh.lachhhengine.sfx.Jukebox;
 	import com.zombidle.MainGame;
@@ -34,9 +35,13 @@ package com.flashinit {
 				MainGame.instance.stage.nativeWindow.x = 338;
 				MainGame.instance.stage.nativeWindow.y = 37;
 			}
+			else{
+				MainGame.instance.stage.width = MainGame.instance.stage.fullScreenWidth;
+				MainGame.instance.stage.height = MainGame.instance.stage.fullScreenHeight;
+			}
 			
-			//MainGame.instance.stage.scaleMode = StageScaleMode.EXACT_FIT;
-			//MainGame.instance.stage.displayState = StageDisplayState.FULL_SCREEN_INTERACTIVE;	
+			MainGame.instance.stage.scaleMode = StageScaleMode.NO_BORDER;
+			//MainGame.instance.stage.displayState = StageDisplayState.FULL_SCREEN_INTERACTIVE;
 		}
 	}
 }
