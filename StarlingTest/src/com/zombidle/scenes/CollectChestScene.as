@@ -1,4 +1,7 @@
 package com.zombidle.scenes {
+	import flash.geom.Point;
+	import starling.events.TouchPhase;
+	import starling.events.Touch;
 	import com.berzerkstudio.flash.meta.MetaDisplayObject;
 	import flash.geom.Rectangle;
 	import starling.events.TouchEvent;
@@ -45,7 +48,6 @@ package com.zombidle.scenes {
 		private var chestActor:ViewLoginCharacterActor;
 		private var beneathText:TextField;
 		private var chestTouchRect:Rectangle;
-		private var chestTouchDown:Boolean = false;
 		
 		private var isCollecting:Boolean = false;
 		
@@ -53,7 +55,6 @@ package com.zombidle.scenes {
 		
 		private var refreshTextButton:TextField;
 		private var refreshButtonRect:Rectangle;
-		private var refreshButtonDown:Boolean = false;
 		
 		private var tickTimer:Timer;
 		
@@ -122,7 +123,7 @@ package com.zombidle.scenes {
 			tickTimer.addEventListener(TimerEvent.TIMER, refreshTime);
 			tickTimer.start();
 			
-			StarlingStage.instance.addEventListener(TouchEvent.TOUCH, refreshButton);
+			StarlingStage.instance.addEventListener(TouchEvent.TOUCH, OnTouch);
 			
 			loadDailyChest();
 		}
@@ -142,32 +143,26 @@ package com.zombidle.scenes {
 			chestActor.playIdle();
 		}
 		
-		public function refreshButton(e:TouchEvent):void{
-			var touchX:Number = e.touches[0].globalX;
-			var touchY:Number = e.touches[0].globalY;
-			//trace("X:" + touchX);
-			//trace("Y:" + touchY);
-			if(refreshButtonRect.contains(touchX, touchY)){
-				if(!refreshButtonDown){
-					trace("refreshed!");
-					refreshButtonDown = true;
-					loadDailyChest();
-				}
-			}
-			else{
-				refreshButtonDown = false;
-			}
+		public function OnTouch(e:TouchEvent):void{
 			
-			if(chestTouchRect.contains(touchX, touchY)){
-				if(!chestTouchDown){
-					trace("touched chest!");
-					chestTouchDown = true;
-					onClickChest();
+			var touch:Touch = e.getTouch(StarlingStage.instance, TouchPhase.BEGAN);
+		    if (touch)
+		    {
+		        var localPos:Point = touch.getLocation(StarlingStage.instance);
+				var touchX:Number = localPos.x;
+				var touchY:Number = localPos.y;
+		        trace("Touched object at position: " + localPos);
+				
+				if(refreshButtonRect.contains(touchX, touchY)){
+						trace("refreshed!");
+						loadDailyChest();
 				}
-			}
-			else{
-				chestTouchDown = false;
-			}
+				
+				if(chestTouchRect.contains(touchX, touchY)){
+						trace("touched chest!");
+						onClickChest();
+				}
+		    }
 		}
 		
 		public function loadDailyChest():void {

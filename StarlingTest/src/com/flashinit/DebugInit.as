@@ -36,11 +36,11 @@ package com.flashinit {
 				MainGame.instance.stage.nativeWindow.y = 37;
 			}
 			else{
-				MainGame.instance.stage.width = MainGame.instance.stage.fullScreenWidth;
-				MainGame.instance.stage.height = MainGame.instance.stage.fullScreenHeight;
+				MainGame.instance.stage.stageWidth = MainGame.instance.stage.fullScreenWidth;
+				MainGame.instance.stage.stageHeight = MainGame.instance.stage.fullScreenHeight;
 			}
 			
-			MainGame.instance.stage.scaleMode = StageScaleMode.NO_BORDER;
+			//MainGame.instance.stage.scaleMode = StageScaleMode.NO_BORDER;
 			//MainGame.instance.stage.displayState = StageDisplayState.FULL_SCREEN_INTERACTIVE;
 		}
 	}
