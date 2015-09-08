@@ -57,6 +57,7 @@ package com.chestapp.display {
         private var mSmoothing:String;
         
         private var mVertexBuffer:VertexBuffer3D;
+		private var mVertexColorOffsetBuffer:VertexBuffer3D;
         private var mIndexData:Vector.<uint>;
         private var mIndexBuffer:IndexBuffer3D;
         
@@ -64,9 +65,7 @@ package com.chestapp.display {
          *  'onVertexDataChanged' to upload the changes to the vertex buffers. Don't change the
          *  size of this object manually; instead, use the 'capacity' property of the QuadBatch. */
         protected var mVertexData:VertexData;
-		
-		private var mColor:ColorTransform;
-		private var mColorMatrix:Vector.<Number>;
+		protected var mVertexColorOffsetData:VertexData;
 
         /** Helper objects. */
         private static var sHelperMatrix:Matrix = new Matrix();
@@ -77,6 +76,7 @@ package com.chestapp.display {
         public function ShaderQuadBatch()
         {
             mVertexData = new VertexData(0, true);
+			mVertexColorOffsetData = new VertexData(0, false); // false - premultiplied alpha - lets color be independent of alpha
             mIndexData = new <uint>[];
             mNumQuads = 0;
             mTinted = false;
@@ -85,8 +85,8 @@ package com.chestapp.display {
             mForceTinted = true; //was false
             mOwnsTexture = false;
 			
-			color = new ColorTransform();
-			mColorMatrix = new <Number>[1,0,0,0, 0,1,0,0, 0,0,1,0, 0,0,0,1, 0,0,0,0];
+			//color = new ColorTransform();
+			//mColorMatrix = new <Number>[1,0,0,0, 0,1,0,0, 0,0,1,0, 0,0,0,1, 0,0,0,0];
 
             // Handle lost context. We use the conventional event here (not the one from Starling)
             // so we're able to create a weak event listener; this avoids memory leaks when people 
@@ -102,6 +102,7 @@ package com.chestapp.display {
             destroyBuffers();
             
             mVertexData.numVertices = 0;
+			mVertexColorOffsetData.numVertices = 0;
             mIndexData.length = 0;
             mNumQuads = 0;
 
@@ -128,6 +129,7 @@ package com.chestapp.display {
             var clone:ShaderQuadBatch = new ShaderQuadBatch();
             clone.mVertexData = mVertexData.clone(0, mNumQuads * 4);
             clone.mIndexData = mIndexData.slice(0, mNumQuads * 6);
+			clone.mVertexColorOffsetData = mVertexColorOffsetData.clone(0, mNumQuads * 4);
             clone.mNumQuads = mNumQuads;
             clone.mTinted = mTinted;
             clone.mTexture = mTexture;
@@ -153,6 +155,7 @@ package com.chestapp.display {
             destroyBuffers();
 
             var numVertices:int = mVertexData.numVertices;
+			var numColorOffsetVertices:int = mVertexColorOffsetData.numVertices;
             var numIndices:int = mIndexData.length;
             var context:Context3D = Starling.context;
 
@@ -161,6 +164,9 @@ package com.chestapp.display {
             
             mVertexBuffer = context.createVertexBuffer(numVertices, VertexData.ELEMENTS_PER_VERTEX);
             mVertexBuffer.uploadFromVector(mVertexData.rawData, 0, numVertices);
+			
+			mVertexColorOffsetBuffer = context.createVertexBuffer(numColorOffsetVertices, VertexData.ELEMENTS_PER_VERTEX);
+			mVertexColorOffsetBuffer.uploadFromVector(mVertexColorOffsetData.rawData, 0, numColorOffsetVertices);
             
             mIndexBuffer = context.createIndexBuffer(numIndices);
             mIndexBuffer.uploadFromVector(mIndexData, 0, numIndices);
@@ -181,6 +187,11 @@ package com.chestapp.display {
                 mIndexBuffer.dispose();
                 mIndexBuffer = null;
             }
+			
+			if(mVertexColorOffsetBuffer){
+				mVertexColorOffsetBuffer.dispose();
+				mVertexColorOffsetBuffer = null;
+			}
         }
 
         /** Uploads the raw data of all batched quads to the vertex buffer. */
@@ -195,6 +206,7 @@ package com.chestapp.display {
                 // as last parameter, we could also use 'mNumQuads * 4', but on some
                 // GPU hardware (iOS!), this is slower than updating the complete buffer.
                 mVertexBuffer.uploadFromVector(mVertexData.rawData, 0, mVertexData.numVertices);
+				mVertexColorOffsetBuffer.uploadFromVector(mVertexColorOffsetData.rawData, 0, mVertexColorOffsetData.numVertices);
                 mSyncRequired = false;
             }
         }
@@ -220,7 +232,7 @@ package com.chestapp.display {
             context.setProgram(getProgram(tinted));
             context.setProgramConstantsFromVector(Context3DProgramType.VERTEX, 0, sRenderAlpha, 1);
             context.setProgramConstantsFromMatrix(Context3DProgramType.VERTEX, 1, mvpMatrix, true);
-			context.setProgramConstantsFromVector(Context3DProgramType.FRAGMENT, 0, mColorMatrix);
+			//context.setProgramConstantsFromVector(Context3DProgramType.FRAGMENT, 0, mColorMatrix);
 			context.setProgramConstantsFromVector(Context3DProgramType.FRAGMENT, 5, MIN_COLOR);
             context.setVertexBufferAt(0, mVertexBuffer, VertexData.POSITION_OFFSET, 
                                       Context3DVertexBufferFormat.FLOAT_2); 
@@ -235,6 +247,8 @@ package com.chestapp.display {
                 context.setVertexBufferAt(2, mVertexBuffer, VertexData.TEXCOORD_OFFSET, 
                                           Context3DVertexBufferFormat.FLOAT_2);
             }
+			
+			context.setVertexBufferAt(3, mVertexColorOffsetBuffer, VertexData.COLOR_OFFSET, Context3DVertexBufferFormat.FLOAT_4);
             
             context.drawTriangles(mIndexBuffer, 0, mNumQuads * 2);
             
@@ -244,6 +258,7 @@ package com.chestapp.display {
                 context.setVertexBufferAt(2, null);
             }
             
+			context.setVertexBufferAt(3, null);
             context.setVertexBufferAt(1, null);
             context.setVertexBufferAt(0, null);
         }
@@ -260,11 +275,16 @@ package com.chestapp.display {
             mSmoothing = null;
             mSyncRequired = true;
         }
+		
+		public function addImageWithColorData(image:Image, color:ColorTransform):void{
+			addImage(image);
+			setQuadColors(mNumQuads-1, color.MultiplierToUint(), color.OffsetToUint(), color.alphaMultiplier, color.alphaOffset);
+		}
         
         /** Adds an image to the batch. This method internally calls 'addQuad' with the correct
          *  parameters for 'texture' and 'smoothing'. */ 
-        public function addImage(image:Image, parentAlpha:Number=1.0, modelViewMatrix:Matrix=null,
-                                 blendMode:String=null):void
+        public function addImage(image:Image, parentAlpha:Number=1.0,  
+								modelViewMatrix:Matrix=null, blendMode:String=null):void
         {
             addQuad(image, parentAlpha, image.texture, image.smoothing, modelViewMatrix, blendMode);
         }
@@ -274,8 +294,7 @@ package com.chestapp.display {
          *  make sure they share that state (e.g. with the 'isStateChange' method), or reset
          *  the batch. */ 
         public function addQuad(quad:Quad, parentAlpha:Number=1.0, texture:Texture=null, 
-                                smoothing:String=null, modelViewMatrix:Matrix=null, 
-                                blendMode:String=null):void
+                                smoothing:String=null, modelViewMatrix:Matrix=null, blendMode:String=null):void
         {
             if (modelViewMatrix == null)
                 modelViewMatrix = quad.transformationMatrix;
@@ -294,6 +313,9 @@ package com.chestapp.display {
             }
             
             quad.copyVertexDataTransformedTo(mVertexData, vertexID, modelViewMatrix);
+			
+			quad.copyVertexDataTo(mVertexColorOffsetData, vertexID);
+			mVertexColorOffsetData.setColorAndAlpha(vertexID, 0x000000, 0.0);
             
             if (alpha != 1.0)
                 mVertexData.scaleAlpha(vertexID, alpha, 4);
@@ -326,6 +348,8 @@ package com.chestapp.display {
             
             quadBatch.mVertexData.copyTransformedTo(mVertexData, vertexID, modelViewMatrix,
                                                     0, numQuads*4);
+			
+			quadBatch.mVertexColorOffsetData.copyTo(mVertexColorOffsetData, vertexID, 0, numQuads*4);
             
             if (alpha != 1.0)
                 mVertexData.scaleAlpha(vertexID, alpha, numQuads*4);
@@ -356,6 +380,14 @@ package com.chestapp.display {
         
         // utility methods for manual vertex-modification
         
+		/** Sets quad colors based on color transform */
+		public function setQuadColors(quadID:int, colorMult:uint, colorOffset:uint, alphaMult:Number, alphaOffset:Number):void{
+			setQuadColor(quadID, colorMult);
+			setQuadAlpha(quadID, alphaMult);
+			setQuadOffsetColor(quadID, colorOffset);
+			setQuadOffsetAlpha(quadID, alphaOffset);
+		}
+		
         /** Transforms the vertices of a certain quad by the given matrix. */
         public function transformQuad(quadID:int, matrix:Matrix):void
         {
@@ -403,6 +435,26 @@ package com.chestapp.display {
             
             mSyncRequired = true;
         }
+		
+		public function setQuadOffsetAlpha(quadID:int, alpha:Number):void{
+			var id:int = quadID * 4;
+			
+			for(var i:int = 0; i < 4; i++){
+				mVertexColorOffsetData.setAlpha(id + i, alpha);
+			}
+			
+			mSyncRequired = true;
+		}
+		
+		public function setQuadOffsetColor(quadID:int, color:uint):void{
+			var id:int = quadID * 4;
+			
+			for(var i:int = 0; i < 4; i++){
+				mVertexColorOffsetData.setColor(id + i, color);
+			}
+			
+			mSyncRequired = true;
+		}
         
         /** Returns the alpha value of the first vertex of a specific quad. */
         public function getQuadAlpha(quadID:int):Number
@@ -641,23 +693,22 @@ package com.chestapp.display {
         }
         
         // properties
-        
 		/**
 		 * The ColorTransform property of the quadbatch.
 		 */
-		public function get color():ColorTransform { return mColor; }
-		public function set color(c:ColorTransform):void {
-			mColor = c;
-			mColorMatrix = mColor.ToColorMatrix();
-		}
+		//public function get color():ColorTransform { return mColor; }
+		//public function set color(c:ColorTransform):void {
+		//	mColor = c;
+		//	mColorMatrix = mColor.ToColorMatrix();
+		//}
 		
 		/**
 		 * Shader color matrix manual override. Set this if you know what you're doing.
 		 */
-		public function set manualColorMatrix(matrix:Vector.<Number>):void{
-			mColorMatrix = matrix;
-		}
-        
+		//public function set manualColorMatrix(matrix:Vector.<Number>):void{
+		//	mColorMatrix = matrix;
+		//}
+		
         /** Returns the number of quads that have been added to the batch. */
         public function get numQuads():int { return mNumQuads; }
         
@@ -726,6 +777,8 @@ package com.chestapp.display {
                 mIndexData[int(i*6+4)] = i*4 + 3;
                 mIndexData[int(i*6+5)] = i*4 + 2;
             }
+			
+			mVertexColorOffsetData.numVertices = value * 4;
 
             destroyBuffers();
             mSyncRequired = true;
@@ -751,6 +804,7 @@ package com.chestapp.display {
                 // va0 -> position
                 // va1 -> color
                 // va2 -> texCoords
+                // va3 -> color offset
                 // vc0 -> alpha
                 // vc1 -> mvpMatrix
                 // fs0 -> texture
@@ -776,7 +830,8 @@ package com.chestapp.display {
                     vertexShader = tinted ?
                         "m44 op, va0, vc1 \n" + // 4x4 matrix transform to output clipspace
                         "mul v0, va1, vc0 \n" + // multiply alpha (vc0) with color (va1)
-                        "mov v1, va2      \n"   // pass texture coordinates to fragment program
+                        "mov v1, va2      \n" + // pass texture coordinates to fragment program
+                        "mov v2, va3	  \n"	// pass color offset data to fragment program	
                         :
                         "m44 op, va0, vc1 \n" + // 4x4 matrix transform to output clipspace
                         "mov v1, va2      \n";  // pass texture coordinates to fragment program
@@ -789,8 +844,8 @@ package com.chestapp.display {
                         "tex ft1,  v1, fs0 <???> 		\n" + // sample texture 0
                         "max ft1, ft1, fc5       		\n" + // avoid division through zero in next step
 						"div ft1.xyz, ft1.xyz, ft1.www  \n" + // restore original RGB values
-						"m44 ft1, ft1, fc0       		\n" + // multiply color with 4x4 matrix
-						"add ft1, ft1, fc4       		\n" + // add offset
+						"mul ft1, ft1, v0       		\n" + // multiply color with vertex color
+						"add ft1, ft1, v2       		\n" + // add offset
 						"mul ft1.xyz, ft1.xyz, ft1.www  \n" + // multiply with original alpha
 						"mov oc, ft1			        \n"   // copy to output
                         :

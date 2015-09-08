@@ -48,6 +48,18 @@ package com.berzerkstudio.flash.geom {
 			blueOffset = a * b;
 		}
 		
+		private function combineRGB(r:uint, g:uint, b:int):uint{
+			return ( (r << 16) | (g << 8) | b );
+		}
+		
+		public function OffsetToUint():uint{
+			return combineRGB(redOffset, greenOffset, blueOffset);
+		}
+		
+		public function MultiplierToUint():uint{
+			return combineRGB(redMultiplier * 255, greenMultiplier * 255, blueMultiplier * 255);
+		}
+		
 		/**
 		 * Returns a ShaderQuadBatch friendly color matrix.
 		 * Builds a new matrix every time, DO NOT CALL EVERY FRAME!

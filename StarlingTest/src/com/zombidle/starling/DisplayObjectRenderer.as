@@ -47,6 +47,8 @@ package com.zombidle.starling {
 		
 		static public var starlingTextFields:Vector.<starling.text.TextField> = new Vector.<starling.text.TextField>;
 		static public var currentTextFields:int = -1;
+		
+		static public var DEBUG_COLOR_TRANSFORM:ColorTransform;
 
 		public function start() : void {
 			_startMatrix = Matrix4x4.createIdentity();
@@ -73,9 +75,12 @@ package com.zombidle.starling {
 			displayObjectContainer.addChild(quadBatch);
 			
 			var color:ColorTransform = new ColorTransform();
-			color.SetTint(255, 0, 0, 1);
+			color.SetTint(255, 0, 255, 1);
 			
-			quadBatch.color = color;
+			color.alphaMultiplier = 1;
+			color.alphaOffset = 0.5;
+			
+			DEBUG_COLOR_TRANSFORM = color;
 			
 			/*cmTest = new ColorMatrixFilter();
 			cmTest.tint(0xFF0000);
@@ -313,7 +318,9 @@ package com.zombidle.starling {
 				displayObjectContainer.addChild(ps)
 				ps.filter = cmTest;
 			} else {*/
-				quadBatch.addImage(ps, ps.alpha);
+			
+				quadBatch.addImageWithColorData(ps, DEBUG_COLOR_TRANSFORM);
+				
 				//if(_depth <= 50) {
 					//quadBatch.blendMode = BlendMode.SCREEN;
 					
